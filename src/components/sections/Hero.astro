@@ -2,20 +2,22 @@
 const { lang = 'id' } = Astro.props;
 
 const t = lang === 'id' ? {
-  greeting:    'Halo. Saya Anggara',
-  tagline:     'Saya mengubah data yang berantakan menjadi sesuatu yang layak dibaca.',
+  greeting:     'Halo. Saya Anggara',
+  tagline:      'Saya mengubah data yang berantakan menjadi sesuatu yang layak dibaca.',
   cta_projects: 'Lihat Proyek',
-  cta_cv:      'Unduh CV',
+  cta_cv:       'Unduh CV',
 } : {
-  greeting:    'Hello. I\'m Anggara',
-  tagline:     'I turn messy data into something worth reading.',
+  greeting:     "Hello. I'm Anggara",
+  tagline:      'I turn messy data into something worth reading.',
   cta_projects: 'View Projects',
-  cta_cv:      'Download CV',
+  cta_cv:       'Download CV',
 };
+
+// Siapkan teks ketikan terminal berdasarkan bahasa aktif
+const typingText = t.greeting;
 ---
 
 <section class="hero">
-  <!-- Background SVG line chart dekoratif -->
   <div class="hero-bg-chart" aria-hidden="true">
     <svg viewBox="0 0 800 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <polyline
@@ -36,25 +38,21 @@ const t = lang === 'id' ? {
   </div>
 
   <div class="hero-content">
-    <!-- Typed text -->
-    <div class="hero-typed font-mono" id="typed-text">
-      <span class="prompt">› </span>
+    <div class="hero-typed font-mono" id="typed-text" data-text={typingText}>
+      <span class="prompt">&gt; </span>
       <span id="typed-output"></span>
       <span class="cursor" id="cursor">_</span>
     </div>
 
-    <!-- Tagline -->
     <p class="hero-tagline font-quote" id="hero-tagline">
       {t.tagline}
     </p>
 
-    <!-- CTA Buttons -->
     <div class="hero-cta" id="hero-cta">
       <a href={`/${lang}/projects`} class="btn-outline">{t.cta_projects}</a>
       <a href="/cv-anggara.pdf" target="_blank" class="btn-outline btn-secondary">{t.cta_cv}</a>
     </div>
 
-    <!-- Stat Chips -->
     <div class="hero-stats" id="hero-stats">
       <div class="stat-chip">
         <span class="stat-value font-mono" data-target="3.77">0</span>
@@ -71,7 +69,6 @@ const t = lang === 'id' ? {
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div class="scroll-indicator" id="scroll-indicator" aria-hidden="true">
     <span class="font-mono" style="font-size: 0.7rem; color: var(--text-secondary)">scroll</span>
     <div class="arrow">↓</div>

@@ -9,13 +9,15 @@ function initAnimations() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // ===== HERO ANIMATIONS =====
+// ===== HERO ANIMATIONS =====
   const typedOutput = document.getElementById('typed-output');
   if (typedOutput) {
     // Kosongkan dulu teksnya setiap kali inisialisasi dijalankan
     typedOutput.textContent = ''; 
 
-    const text = typedOutput.closest('.hero-typed')?.dataset.text
+    // Menggunakan ID pembungkus agar seleksi elemen presisi di server produksi
+    const typedContainer = document.getElementById('typed-text');
+    const text = typedContainer?.dataset.text 
       || (document.documentElement.lang === 'id' ? 'Halo. Saya Anggara' : 'Hello. I\'m Anggara');
 
     let i = 0;
@@ -26,7 +28,11 @@ function initAnimations() {
         return;
       }
       
-      typedOutput.textContent += text[i];
+      // Amankan agar tidak memunculkan karakter 'undefined' jika teks gagal dimuat
+      if (text && text[i]) {
+        typedOutput.textContent += text[i];
+      }
+      
       i++;
       if (i >= text.length) {
         clearInterval(typeInterval);
