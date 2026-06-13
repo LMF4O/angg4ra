@@ -1,0 +1,9 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'Selamat Datang' } },
+  ];
+}
+
+const { slug } = Astro.params;
+---
