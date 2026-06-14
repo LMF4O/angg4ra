@@ -3,15 +3,20 @@
 // sm = 3 kolom, md = 6 kolom, lg = 9 kolom, xl = 12 kolom
 const { size = 'md', class: className = '', scanline = false } = Astro.props;
 
-const colSpan = {
-  sm: 'col-span-12 md:col-span-6 lg:col-span-3',
-  md: 'col-span-12 md:col-span-6',
-  lg: 'col-span-12 lg:col-span-9',
-  xl: 'col-span-12',
-}[size];
+// Pakai inline styles, bukan dynamic Tailwind class string
+// Tailwind purge gak bisa detect string yang di-construct secara dinamis
+const colStyles = {
+  sm: { default: 'span 12', md: 'span 6', lg: 'span 3' },
+  md: { default: 'span 12', md: 'span 6', lg: 'span 6' },
+  lg: { default: 'span 12', md: 'span 12', lg: 'span 9' },
+  xl: { default: 'span 12', md: 'span 12', lg: 'span 12' },
+}[size] ?? { default: 'span 12', md: 'span 6', lg: 'span 6' };
 ---
 
-<div class={`bento-card ${colSpan} ${className} ${scanline ? 'scanline' : ''}`}>
+<div
+  class={`bento-card bento-${size} ${className} ${scanline ? 'scanline' : ''}`}
+  data-size={size}
+>
   <slot />
 </div>
 
@@ -24,11 +29,30 @@ const colSpan = {
     position: relative;
     overflow: hidden;
     transition: border-color 250ms ease, box-shadow 250ms ease;
+
+    /* Default: full width */
+    grid-column: span 12;
   }
 
   .bento-card:hover {
     border-color: var(--accent);
     box-shadow: 0 0 20px rgba(107, 45, 62, 0.15);
+  }
+
+  /* Breakpoint md (>= 768px) */
+  @media (min-width: 768px) {
+    .bento-sm { grid-column: span 6; }
+    .bento-md { grid-column: span 6; }
+    .bento-lg { grid-column: span 12; }
+    .bento-xl { grid-column: span 12; }
+  }
+
+  /* Breakpoint lg (>= 1024px) */
+  @media (min-width: 1024px) {
+    .bento-sm { grid-column: span 3; }
+    .bento-md { grid-column: span 6; }
+    .bento-lg { grid-column: span 9; }
+    .bento-xl { grid-column: span 12; }
   }
 
   /* Efek scanline pada kartu tertentu */
