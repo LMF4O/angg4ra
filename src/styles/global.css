@@ -38,6 +38,10 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (min-width: 1280px) {
+  html { zoom: 1.25; }
+}
+
 body {
   background-color: var(--bg-main);
   color: var(--text-primary);
