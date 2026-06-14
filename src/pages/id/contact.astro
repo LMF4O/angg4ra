@@ -71,6 +71,23 @@ import BentoCard from '../../components/ui/BentoCard.astro';
       </div>
     </div>
   </div>
+
+  <div id="custom-alert" class="custom-alert-overlay" aria-hidden="true">
+    <div class="custom-alert-box font-mono">
+      <div class="alert-scanline"></div>
+      <div class="alert-header">
+        <span class="alert-title-text">[ SYSTEM NOTIFICATION ]</span>
+        <button type="button" class="alert-close-x" id="alert-close-x-btn">&times;</button>
+      </div>
+      <div class="alert-body">
+        <span class="alert-prompt">&gt;</span>
+        <p id="alert-message-text">Menginisialisasi transmisi...</p>
+      </div>
+      <div class="alert-footer">
+        <button type="button" class="btn-alert-ok" id="alert-ok-btn">acknowledge_</button>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
 
 <style>
@@ -123,7 +140,6 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     box-sizing: border-box;
   }
   
-  /* Efek Fokus Glow Terminal */
   .terminal-input:focus { 
     border-color: var(--accent-data); 
     background: rgba(107, 45, 62, 0.05);
@@ -134,13 +150,11 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     color: rgba(255, 255, 255, 0.3); 
   }
 
-  /* Custom Styling khusus Dropdown Select */
   .select-wrapper {
     position: relative;
     width: 100%;
   }
   
-  /* Tanda panah custom terminal */
   .select-wrapper::after {
     content: "▼";
     font-size: 0.7rem;
@@ -163,15 +177,13 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     padding-right: 2.5rem;
   }
   
-  /* WARNA DROPDOWN MENU KETIKA DIKLIK */
   select.terminal-input option {
-    background-color: #121212; /* Latar belakang hitam pekat */
-    color: var(--text-primary); /* Teks putih/abu terang */
+    background-color: #121212;
+    color: var(--text-primary);
     padding: 10px;
     font-family: var(--font-mono);
   }
 
-  /* Tombol Transmit Retro */
   .btn-transmit {
     margin-top: 0.5rem;
     padding: 0.75rem 2rem;
@@ -197,7 +209,6 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     cursor: not-allowed;
   }
   
-  /* Sidebar Links */
   .contact-links { 
     display: flex; 
     flex-direction: column; 
@@ -229,7 +240,6 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     transition: color 200ms ease; 
   }
   
-  /* Efek Hover Keren untuk Card Link */
   .contact-link:hover {
     border-color: rgba(107, 45, 62, 0.3);
     background: rgba(107, 45, 62, 0.05);
@@ -239,7 +249,131 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     color: var(--accent-data); 
   }
 
-  /* Responsive Breakpoints */
+  /* ── STYLING CUSTOM ALERT SCIFI DI SINI ── */
+  .custom-alert-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+  }
+
+  /* Class pemicu aktif lewat JS */
+  .custom-alert-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .custom-alert-box {
+    position: relative;
+    width: 90%;
+    max-width: 450px;
+    background: #0f0f11;
+    border: 1px solid var(--accent); /* Menggunakan warna marun tema argy.dev */
+    box-shadow: 0 0 30px rgba(107, 45, 62, 0.25);
+    border-radius: 4px;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .custom-alert-overlay.is-active .custom-alert-box {
+    transform: scale(1);
+  }
+
+  /* Scanline CRT Efek Efek */
+  .alert-scanline {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .alert-header {
+    background: rgba(107, 45, 62, 0.15);
+    padding: 0.75rem 1.2rem;
+    border-bottom: 1px solid rgba(107, 45, 62, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .alert-title-text {
+    font-size: 0.75rem;
+    color: var(--accent-data);
+    letter-spacing: 0.1em;
+    font-weight: bold;
+  }
+
+  .alert-close-x {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  .alert-close-x:hover { color: var(--accent-data); }
+
+  .alert-body {
+    padding: 2rem 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .alert-prompt {
+    color: var(--accent-data);
+    font-weight: bold;
+    animation: blink 1s step-end infinite;
+  }
+
+  #alert-message-text {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .alert-footer {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-alert-ok {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-primary);
+    padding: 0.4rem 1.2rem;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 150ms ease;
+  }
+
+  .btn-alert-ok:hover {
+    border-color: var(--accent-data);
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(107, 45, 62, 0.4);
+  }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
   @media (max-width: 968px) {
     .bento-main { grid-column: span 12; }
     .bento-sidebar { grid-column: span 12; }
@@ -248,14 +382,44 @@ import BentoCard from '../../components/ui/BentoCard.astro';
 </style>
 
 <script>
-  // Menangkap form element dan menambahkan event listener submit secara modern
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Mencegah page reload bawaan form
+  // Elemen-elemen DOM untuk Kustom Alert Terminal
+  const alertOverlay = document.getElementById('custom-alert');
+  const alertMessage = document.getElementById('alert-message-text');
+  const alertCloseX = document.getElementById('alert-close-x-btn');
+  const alertOkBtn = document.getElementById('alert-ok-btn');
 
-    // Type casting ke elemen input HTML yang spesifik agar TypeScript senang
+  // Fungsi Pemicu Modal Alert Pengganti alert() bawaan
+  function triggerTerminalAlert(message: string) {
+    if (alertOverlay && alertMessage) {
+      alertMessage.textContent = message;
+      alertOverlay.classList.add('is-active');
+      alertOverlay.setAttribute('aria-hidden', 'false');
+    }
+  }
+
+  function closeTerminalAlert() {
+    if (alertOverlay) {
+      alertOverlay.classList.remove('is-active');
+      alertOverlay.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  // Event handler untuk menutup modal
+  alertCloseX?.addEventListener('click', closeTerminalAlert);
+  alertOkBtn?.addEventListener('click', closeTerminalAlert);
+  
+  // Menutup jika area overlay luar di-klik
+  alertOverlay?.addEventListener('click', (e) => {
+    if (e.target === alertOverlay) closeTerminalAlert();
+  });
+
+  // Logika Submit Formspree Utama
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     const nameEl = document.getElementById('name') as HTMLInputElement | null;
     const emailEl = document.getElementById('email') as HTMLInputElement | null;
     const subjectEl = document.getElementById('subject') as HTMLSelectElement | null;
@@ -267,7 +431,7 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     const message = messageEl?.value;
 
     if (!name || !email || !message) {
-      alert('Mohon isi field yang wajib.');
+      triggerTerminalAlert('CRITICAL ERROR: Mohon isi semua parameter field yang wajib.');
       return;
     }
 
@@ -277,7 +441,6 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     }
 
     try {
-      // Endpoint Formspree bawaan kamu
       const response = await fetch('https://formspree.io/f/xpqekojg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -285,14 +448,14 @@ import BentoCard from '../../components/ui/BentoCard.astro';
       });
 
       if (response.ok) {
-        alert('Pesan berhasil dikirim via Formspree!');
-        form.reset(); // Reset isi form setelah sukses terkirim
+        triggerTerminalAlert('TRANSMISSION SUCCESSFUL: Pesan berhasil dikirim via Formspree protocol.');
+        form.reset();
       } else {
-        alert('Gagal mengirim pesan. Silakan coba lagi.');
+        triggerTerminalAlert('TRANSMISSION FAILED: Gagal mengirimkan paket data. Silakan coba kembali.');
       }
     } catch (error) {
       console.error('Error transmitting message:', error);
-      alert('Terjadi kesalahan koneksi.');
+      triggerTerminalAlert('NETWORK ERROR: Terjadi gangguan interferensi koneksi server.');
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
