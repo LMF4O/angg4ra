@@ -13,7 +13,6 @@ const rest = allProjects.filter(p => !p.data.featured);
   <div class="page-container">
     <h1 class="page-title">Proyek</h1>
 
-    <!-- Filter tabs -->
     <div class="filter-tabs" id="filter-tabs">
       {['Semua', 'Machine Learning', 'Analisis Data', 'Web', 'Mengajar'].map(cat => (
         <button class={`filter-btn font-mono ${cat === 'Semua' ? 'active' : ''}`} data-filter={cat}>
@@ -22,7 +21,6 @@ const rest = allProjects.filter(p => !p.data.featured);
       ))}
     </div>
 
-    <!-- Proyek Unggulan -->
     {featured && (
       <div class="featured-project">
         <BentoCard size="xl">
@@ -33,14 +31,13 @@ const rest = allProjects.filter(p => !p.data.featured);
             {featured.data.tags.map(tag => <span class="tag font-mono">{tag}</span>)}
           </div>
           {featured.data.metric && <p class="metric font-mono">{featured.data.metric}</p>}
-          <a href={`/id/projects/${featured.slug}`} class="btn-outline" style="margin-top: 1rem; display: inline-block">
+          <a href={`/id/projects/${featured.id}`} class="btn-outline" style="margin-top: 1rem; display: inline-block">
             Buka proyek →
           </a>
         </BentoCard>
       </div>
     )}
 
-    <!-- Grid Proyek -->
     <div class="bento-grid projects-grid" id="projects-grid">
       {rest.map(project => (
         <BentoCard size="md" class="project-card" data-category={project.data.category}>
@@ -50,7 +47,7 @@ const rest = allProjects.filter(p => !p.data.featured);
           <div class="tags">
             {project.data.tags.slice(0, 3).map(tag => <span class="tag font-mono">{tag}</span>)}
           </div>
-          <a href={`/id/projects/${project.slug}`} class="project-link font-mono">Buka proyek →</a>
+          <a href={`/id/projects/${project.id}`} class="project-link font-mono">Buka proyek →</a>
         </BentoCard>
       ))}
     </div>
@@ -111,9 +108,9 @@ const rest = allProjects.filter(p => !p.data.featured);
 </style>
 
 <script>
-  // Filter proyek
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  // Filter proyek dengan penentuan tipe HTML eksplisit untuk TypeScript
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const projectCards = document.querySelectorAll<HTMLElement>('.project-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -123,7 +120,7 @@ const rest = allProjects.filter(p => !p.data.featured);
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // Filter kartu
+      // Filter kartu berdasarkan data-category
       projectCards.forEach(card => {
         if (filter === 'Semua' || card.dataset.category === filter) {
           card.style.display = '';

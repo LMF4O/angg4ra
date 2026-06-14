@@ -24,7 +24,7 @@ const navLinks = lang === 'id'
 
 <nav class="navbar">
   <div class="nav-inner">
-    <!-- Logo / Nama -->
+    <!-- Logo -->
     <a href={`/${lang}/`} class="nav-logo">
       <span class="font-mono text-data">argy</span><span class="font-mono text-secondary">.dev</span>
     </a>
@@ -32,10 +32,10 @@ const navLinks = lang === 'id'
     <!-- Links -->
     <ul class="nav-links">
       {navLinks.map(link => (
-        <li>
+        <li class="nav-item">
           <a
             href={link.href}
-            class={currentPath === link.href ? 'active' : ''}
+            class={`nav-link font-mono ${currentPath === link.href ? 'active' : ''}`}
           >
             {link.label}
           </a>
@@ -72,7 +72,9 @@ const navLinks = lang === 'id'
     font-size: 1rem;
     text-decoration: none;
     flex-shrink: 0;
+    transition: opacity 200ms ease;
   }
+  .nav-logo:hover { opacity: 0.75; }
 
   .nav-links {
     display: flex;
@@ -81,21 +83,47 @@ const navLinks = lang === 'id'
     margin-left: auto;
   }
 
-  .nav-links a {
-    font-family: var(--font-mono);
+  .nav-item { position: relative; }
+
+  .nav-link {
     font-size: 0.8rem;
     color: var(--text-secondary);
     text-decoration: none;
     letter-spacing: 0.03em;
+    padding-bottom: 4px;
+    position: relative;
     transition: color 200ms ease;
   }
 
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--text-primary);
+  /* Underline slide-in dari kiri pakai ::after */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--accent-data);
+    border-radius: 999px;
+    transition: width 250ms ease;
   }
 
-  /* Mobile: sembunyikan link, tampilkan hanya logo */
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Active state — underline penuh, warna burgundy */
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+  .nav-link.active::after {
+    width: 100%;
+    background-color: var(--accent);
+  }
+
   @media (max-width: 640px) {
     .nav-links { display: none; }
   }
