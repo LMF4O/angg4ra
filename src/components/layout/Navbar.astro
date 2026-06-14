@@ -1,7 +1,7 @@
 ---
 import LanguageToggle from '../ui/LanguageToggle.astro';
 
-const { lang = 'id', currentPath } = Astro.props;
+const { lang = 'id', currentPath = '' } = Astro.props;
 
 const navLinks = lang === 'id'
   ? [
@@ -24,26 +24,30 @@ const navLinks = lang === 'id'
 
 <nav class="navbar">
   <div class="nav-inner">
-    <!-- Logo -->
     <a href={`/${lang}/`} class="nav-logo">
       <span class="font-mono text-data">argy</span><span class="font-mono text-secondary">.dev</span>
     </a>
 
-    <!-- Links -->
     <ul class="nav-links">
-      {navLinks.map(link => (
-        <li class="nav-item">
-          <a
-            href={link.href}
-            class={`nav-link font-mono ${currentPath === link.href ? 'active' : ''}`}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
+      {navLinks.map(link => {
+        // Normalisasi URL untuk menghilangkan trailing slash '/' di bagian akhir agar perbandingan akurat
+        const cleanCurrentPath = currentPath.replace(/\/$/, '');
+        const cleanLinkHref = link.href.replace(/\/$/, '');
+        const isActive = cleanCurrentPath === cleanLinkHref;
+
+        return (
+          <li class="nav-item">
+            <a
+              href={link.href}
+              class={`nav-link font-mono ${isActive ? 'active' : ''}`}
+            >
+              {link.label}
+            </a>
+          </li>
+        );
+      })}
     </ul>
 
-    <!-- Language Toggle -->
     <LanguageToggle currentLang={lang} currentPath={currentPath} />
   </div>
 </nav>
@@ -92,24 +96,26 @@ const navLinks = lang === 'id'
     color: var(--text-secondary);
     text-decoration: none;
     letter-spacing: 0.03em;
-    padding-bottom: 4px;
+    padding-bottom: 6px; /* Ditambah sedikit agar memberi jarak ke garis bawah */
     position: relative;
     transition: color 200ms ease;
     display: inline-block;
   }
 
+  /* Base style untuk pseudo-element underline */
   .nav-link::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0%;
-    height: 1px;
+    width: 0;
+    height: 2px; /* Ditebalkan sedikit jadi 2px agar lebih solid */
     background-color: var(--accent-data);
     border-radius: 999px;
     transition: width 250ms ease;
   }
 
+  /* Hover State */
   .nav-link:hover {
     color: var(--text-primary);
   }
@@ -117,12 +123,13 @@ const navLinks = lang === 'id'
     width: 100%;
   }
 
+  /* Active State */
   .nav-link.active {
     color: var(--text-primary);
   }
   .nav-link.active::after {
     width: 100%;
-    background-color: var(--accent);
+    background-color: var(--accent, var(--accent-data));
   }
 
   @media (max-width: 640px) {
