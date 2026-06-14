@@ -48,7 +48,7 @@ const navLinks = lang === 'id'
   </div>
 </nav>
 
-<style>
+<style is:global>
   .navbar {
     position: sticky;
     top: 0;
@@ -81,6 +81,8 @@ const navLinks = lang === 'id'
     list-style: none;
     gap: 1.75rem;
     margin-left: auto;
+    padding: 0;
+    margin-right: 0;
   }
 
   .nav-item { position: relative; }
@@ -93,9 +95,9 @@ const navLinks = lang === 'id'
     padding-bottom: 4px;
     position: relative;
     transition: color 200ms ease;
+    display: inline-block;
   }
 
-  /* Underline slide-in dari kiri pakai ::after */
   .nav-link::after {
     content: '';
     position: absolute;
@@ -115,7 +117,6 @@ const navLinks = lang === 'id'
     width: 100%;
   }
 
-  /* Active state — underline penuh, warna burgundy */
   .nav-link.active {
     color: var(--text-primary);
   }
