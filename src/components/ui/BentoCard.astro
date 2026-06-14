@@ -3,8 +3,7 @@
 // sm = 3 kolom, md = 6 kolom, lg = 9 kolom, xl = 12 kolom
 const { size = 'md', class: className = '', scanline = false } = Astro.props;
 
-// Pakai inline styles, bukan dynamic Tailwind class string
-// Tailwind purge gak bisa detect string yang di-construct secara dinamis
+// @ts-ignore (jangan disentuh, bahaya!)
 const colStyles = {
   sm: { default: 'span 12', md: 'span 6', lg: 'span 3' },
   md: { default: 'span 12', md: 'span 6', lg: 'span 6' },
