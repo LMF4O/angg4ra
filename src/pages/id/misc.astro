@@ -10,7 +10,7 @@ import BentoCard from '../../components/ui/BentoCard.astro';
     <header class="page-header">
       <p class="eyebrow font-mono">/ misc</p>
       <h1 class="page-title">Di Luar Kode</h1>
-      <p class="page-desc">Hal-hal yang membentuk cara saya berpikir — bacaan dan benang merah dari apa yang sedang saya selidiki.</p>
+      <p class="page-desc">Hal-hal yang membentuk cara saya berpikir. bacaan, proyek, dan pola yang sedang saya coba pahami. Sebagian berubah menjadi kode. Sebagian lainnya tetap menjadi misteri.</p>
     </header>
 
     <!-- ══════════════════════════════════════════
@@ -59,8 +59,8 @@ import BentoCard from '../../components/ui/BentoCard.astro';
           <div class="pin-head pin-red"></div>
           <div class="note note-dark">
             <span class="note-tag font-mono tag-red">KASUS AKTIF</span>
-            <p class="note-title">Prediksi ISPU Jakarta</p>
-            <p class="note-body">5 algoritma ML, SHAP explainability. Random Forest — 94.2% akurasi.</p>
+            <p class="note-title">Mengapa Udara Jakarta Memburuk?</p>
+            <p class="note-body">Mencari pola kualitas udara menggunakan machine learning. Random Forest saat ini menjadi tersangka utama.</p>
             <div class="note-chips"><span class="chip font-mono">ML</span><span class="chip font-mono">Python</span><span class="chip font-mono">SHAP</span></div>
           </div>
         </div>
@@ -89,8 +89,8 @@ import BentoCard from '../../components/ui/BentoCard.astro';
           <div class="pin-head pin-teal"></div>
           <div class="note note-dark note-sm">
             <span class="note-tag font-mono tag-teal">RISET</span>
-            <p class="note-title">MLOps Dasar</p>
-            <p class="note-body">Pipeline, feature engineering, model deployment — misi berikutnya.</p>
+            <p class="note-title">Mengapa Model Gagal Setelah Deploy?</p>
+            <p class="note-body">Mempelajari deployment, monitoring, dan siklus hidup model di dunia nyata.</p>
           </div>
         </div>
 
@@ -107,8 +107,8 @@ import BentoCard from '../../components/ui/BentoCard.astro';
           <div class="pin-head pin-green"></div>
           <div class="note note-dark note-sm">
             <span class="note-tag font-mono tag-green">LOG</span>
-            <p class="note-title">Roblox Dev</p>
-            <p class="note-body">Lua, game design, virtual environments — sejak SMA.</p>
+            <p class="note-title">Kasus Pertama: Roblox</p>
+            <p class="note-body">Tempat saya belajar bahwa membuat sesuatu lebih menyenangkan daripada memainkannya.</p>
           </div>
         </div>
 
@@ -124,16 +124,100 @@ import BentoCard from '../../components/ui/BentoCard.astro';
         </div>
 
         <!-- STICKY NOTES -->
-        <div class="sticky" style="bottom:6%;left:4%;transform:rotate(-1.5deg)" aria-hidden="true">
-          <p class="font-mono sticky-text">"Pola di balik<br/>noise — itu yang<br/>menarik."</p>
-        </div>
-        <div class="sticky sticky-teal" style="bottom:6%;right:4%;transform:rotate(1deg)" aria-hidden="true">
-          <p class="font-mono sticky-text">Bekasi, ID 📍</p>
-        </div>
-        <div class="sticky sticky-red" style="bottom:6%;left:38%;transform:rotate(-2deg)" aria-hidden="true">
-          <p class="font-mono sticky-text">42 = jawaban?</p>
-        </div>
+          <div class="sticky" style="bottom:6%;left:4%;transform:rotate(-1.5deg)" aria-hidden="true">
+            <p class="font-mono sticky-text">
+              "Pola di balik<br/>noise. itu yang<br/>menarik."
+            </p>
+          </div>
 
+          <div class="sticky sticky-teal" style="bottom:6%;right:4%;transform:rotate(1deg)" aria-hidden="true">
+            <p class="font-mono sticky-text">
+              Bekasi, ID 📍
+            </p>
+          </div>
+
+          <div class="sticky sticky-red" style="bottom:6%;left:38%;transform:rotate(-2deg)" aria-hidden="true">
+            <p class="font-mono sticky-text">
+              42 = jawaban?
+            </p>
+          </div>
+          
+          <!-- #1 -->
+          <div class="sticky"
+              style="bottom:27%;left:49%;transform:rotate(8deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              masih belum<br/>
+              cukup?
+            </p>
+          </div>
+
+          <div class="sticky"
+              style="bottom:39%;left:61%;transform:rotate(-8deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              what if?
+            </p>
+          </div>
+
+          <div class="sticky"
+              style="top:14%;right:2%;transform:rotate(5deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              TODO:<br/>
+              tidur lebih awal
+            </p>
+          </div>
+
+          <!-- #2 -->
+          <div class="sticky sticky-red"
+              style="top:56%;left:20%;transform:rotate(6deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              sebagian besar<br/>
+              ide lahir jam 2 pagi
+            </p>
+          </div>
+
+          <!-- #3 -->
+          <div class="sticky sticky-teal"
+              style="top:26%;left:82%;transform:rotate(3deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              curiosity &gt;<br/>
+              motivation
+            </p>
+          </div>
+
+          <!-- #4 -->
+          <div class="sticky"
+              style="top:72%;left:22%;transform:rotate(-4deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              penasaran atau<br/>
+              overthinking?
+            </p>
+          </div>
+
+          <!-- #5 -->
+          <div class="sticky sticky-red"
+              style="top:58%;right:12%;transform:rotate(7deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              data menjelaskan<br/>
+              pola
+            </p>
+          </div>
+
+          <!-- #6 -->
+          <div class="sticky sticky-teal"
+              style="top:78%;left:78%;transform:rotate(-3deg)"
+              aria-hidden="true">
+            <p class="font-mono sticky-text">
+              bug ditemukan<br/>
+              setelah deploy
+            </p>
+          </div>
       </div><!-- /board-wrap -->
       </div><!-- /board-container -->
     </section>
@@ -240,8 +324,8 @@ const NOTE_DETAILS: Record<string, {
 }> = {
   "pin-0": {
     tag: "KASUS AKTIF", tagColor: "#A05060",
-    title: "Prediksi ISPU Jakarta",
-    body: "5 algoritma ML, SHAP explainability. Random Forest — 94.2% akurasi.",
+    title: "Siapa Pelaku Polusi Jakarta?",
+    body: "Mencari pola kualitas udara menggunakan machine learning. Random Forest saat ini menjadi tersangka utama.",
     extra: "Proyek ini menganalisis data kualitas udara Jakarta dari stasiun BMKG dan menggunakan SHAP untuk menjelaskan prediksi tiap hari. Tujuan akhir: sistem peringatan dini berbasis ML yang bisa digunakan oleh warga biasa.",
     chips: ["ML", "Python", "SHAP", "Random Forest"]
   },
@@ -261,22 +345,22 @@ const NOTE_DETAILS: Record<string, {
   },
   "pin-3": {
     tag: "RISET", tagColor: "#407888",
-    title: "MLOps Dasar",
-    body: "Pipeline, feature engineering, model deployment — misi berikutnya.",
+    title: "Bagaimana Model Bertahan di Dunia Nyata?",
+    body: "Belajar deployment, monitoring, dan siklus hidup model di luar notebook.",
     extra: "Roadmap: MLflow untuk experiment tracking, FastAPI untuk serving model, Docker untuk containerization. Target: bisa deploy model ML ke production dalam < 1 jam dari notebook.",
     chips: ["MLflow", "FastAPI", "Docker"]
   },
   "pin-4": {
     tag: "IDENTITAS", tagColor: "#A05060",
-    title: "INTP · Educator · Data Nerd",
-    body: "Mengajar logika di fajar, debugging model di malam hari.",
-    extra: "Guru coding di DigiKidz pagi hari, mahasiswa + researcher malam hari. INTP yang sangat percaya bahwa mengajar adalah cara terbaik untuk benar-benar memahami sesuatu.",
+    title: "INTP · Educator · Builder",
+    body: "Mencari pola di data, makna di percakapan, dan bug di tempat yang tidak seharusnya.",
+    extra: "Guru coding di DigiKidz siang hari, mahasiswa di pagi hari dan researcher malam hari. INTP yang sangat percaya bahwa mengajar adalah cara terbaik untuk benar-benar memahami sesuatu dan bersabar.",
     chips: ["MBTI: INTP", "Bekasi, ID"]
   },
   "pin-5": {
     tag: "LOG", tagColor: "#507A5A",
-    title: "Roblox Dev",
-    body: "Lua, game design, virtual environments — sejak SMA.",
+    title: "Kasus Pertama: Roblox",
+    body: "Tempat saya belajar bahwa membuat sesuatu lebih menyenangkan daripada memainkannya.",
     extra: "Mulai ngoding dari Roblox Studio waktu SMA — Lua jadi bahasa pertama. Dari sana ke web, lalu ke data science. Game design mengajarkan cara berpikir sistem yang ternyata sangat berguna di ML.",
     chips: ["Lua", "Roblox Studio", "Game Design"]
   },
