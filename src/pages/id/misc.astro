@@ -4,1237 +4,1354 @@ import BentoCard from '../../components/ui/BentoCard.astro';
 ---
 
 <BaseLayout title="Misc" lang="id">
-  <div class="page-container">
+  <div class="page-wrap">
 
-    <div class="page-header">
-      <p class="page-eyebrow font-mono">/ misc</p>
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+      <p class="eyebrow font-mono">/ misc</p>
       <h1 class="page-title">Di Luar Kode</h1>
-      <p class="page-desc">
-        Hal-hal yang membentuk cara saya berpikir — musik, bacaan, dan benang merah dari apa yang sedang saya selidiki secara mendalam.
-      </p>
-    </div>
+      <p class="page-desc">Hal-hal yang membentuk cara saya berpikir — bacaan dan benang merah dari apa yang sedang saya selidiki.</p>
+    </header>
 
-    <div class="bento-grid">
-
-      <!-- SPOTIFY CARD -->
-      <div class="card-sm">
-        <BentoCard size="sm" scanline={true}>
-          <div class="spotify-card" id="spotify-widget">
-            <p class="section-label font-mono">/ sedang diputar</p>
-
-            <div class="spotify-loading" id="spotify-loading">
-              <div class="vinyl-wrapper">
-                <div class="vinyl spinning">
-                  <div class="vinyl-center"></div>
-                </div>
-              </div>
-              <p class="loading-text font-mono">memuat sinyal...</p>
-            </div>
-
-            <div class="spotify-content" id="spotify-content" style="display:none">
-              <div class="vinyl-wrapper">
-                <div class="vinyl" id="vinyl-disc-playing">
-                  <img id="track-art" src="" alt="" class="vinyl-art" />
-                  <div class="vinyl-center"></div>
-                </div>
-              </div>
-              <div class="track-info">
-                <p class="track-name" id="track-name">—</p>
-                <p class="track-artist font-mono" id="track-artist">—</p>
-                <div class="track-status font-mono" id="track-status">
-                  <span class="dot-live" id="dot-live"></span>
-                  <span id="status-text">—</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="spotify-error" id="spotify-error" style="display:none">
-              <div class="vinyl-wrapper">
-                <div class="vinyl">
-                  <div class="vinyl-center"></div>
-                </div>
-              </div>
-              <p class="error-text font-mono">terminal offline.<br/>playlist disembunyikan.</p>
-            </div>
-
-            <div class="spotify-footer">
-              <a href="https://open.spotify.com/user/gii" target="_blank" rel="noopener" class="spotify-link font-mono">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                Buka di Spotify
-              </a>
-            </div>
-          </div>
-        </BentoCard>
+    <!-- ══════════════════════════════════════════
+         DETECTIVE / MEMORY BOARD
+    ══════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-head">
+        <p class="section-eyebrow font-mono">/ papan investigasi</p>
+        <p class="section-sub">Benang merah dari proyek, riset, dan hal-hal yang sedang saya bedah.</p>
       </div>
 
-      <!-- DETECTIVE BOARD -->
-      <div class="card-lg">
-        <BentoCard size="lg">
-          <div class="detective-card">
-            <p class="section-label font-mono">/ papan investigasi</p>
-            <p class="detective-sub">Benang merah dari anomali data dan teori yang sedang saya bedah.</p>
+      <div class="board-container">
+      <!-- Kucing hitam mengintip dari kiri board -->
+      <div class="board-cat draggable-x" id="board-cat" role="button" tabindex="0" aria-label="Kucing penjaga — klik untuk menyapa">
+  <div class="cat-bubble" id="cat-bubble">PRRRRT... 🐾</div>
+        <div class="cat-body">
+          <div class="cat-fur-wisps">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="cat-ears">
+            <div class="cat-ear cat-ear-l"></div>
+            <div class="cat-ear cat-ear-r"></div>
+          </div>
+          <div class="cat-head">
+            <div class="cat-eyes">
+              <div class="cat-eye"><span class="cat-pupil"></span></div>
+              <div class="cat-eye"><span class="cat-pupil"></span></div>
+            </div>
+            <div class="cat-chin"></div>
+          </div>
+        </div>
+        <p class="cat-label font-mono">Tap/Drag me!</p>
+      </div>
 
-            <div class="board" id="detective-board">
-              <!-- SVG benang merah animasi -->
-              <svg class="string-layer" id="string-svg">
-                <!-- Benang MERAH: ISPU → Proposal → Website -->
-                <line class="str-line red-str" data-x1="12" data-y1="13" data-x2="30" data-y2="27" />
-                <line class="str-line red-str" data-x1="30" data-y1="27" data-x2="56" data-y2="11" />
-                <line class="str-line red-str-dash" data-x1="56" data-y1="11" data-x2="78" data-y2="30" />
-                <!-- Benang TEAL: Proposal → MLOps -->
-                <line class="str-line teal-str" data-x1="30" data-y1="27" data-x2="10" data-y2="62" />
-                <!-- Benang HIJAU: Website → Lua -->
-                <line class="str-line green-str" data-x1="56" data-y1="11" data-x2="30" data-y2="62" />
-                <!-- Benang putus-putus: IDENTITAS → ISPU -->
-                <line class="str-line faint-str" data-x1="78" data-y1="30" data-x2="56" data-y2="11" />
-              </svg>
+      <div class="board-wrap">
+        <!-- Grain overlay -->
+        <div class="board-grain"></div>
+        <!-- Cursor glow -->
+        <div class="board-glow" id="board-glow"></div>
 
-              <div class="pin" style="top:8%; left:5%;">
-                <div class="pin-dot pin-red"></div>
-                <div class="note note-torn note-hover">
-                  <p class="note-label font-mono">KASUS AKTIF</p>
-                  <p class="note-title">Prediksi ISPU Jakarta</p>
-                  <p class="note-body">5 algoritma, SHAP explainability, Random Forest 94.2% akurasi</p>
-                  <div class="note-tags"><span class="ntag ntag-red">ML</span><span class="ntag">Python</span></div>
-                </div>
-              </div>
+        <!-- SVG strings — diposisikan via JS -->
+        <svg class="strings-svg" id="strings-svg" aria-hidden="true"></svg>
 
-              <div class="pin" style="top:20%; left:22%;">
-                <div class="pin-dot pin-teal"></div>
-                <div class="note note-yellow note-hover">
-                  <p class="note-label font-mono">ONGOING</p>
-                  <p class="note-title">Proposal Skripsi</p>
-                  <p class="note-body">CRM + Predictive Analytics untuk metrik performa siswa real-time.</p>
-                </div>
-              </div>
+        <!-- NOTES -->
+        <div class="pin-item" id="pin-0" style="top:7%;left:4%">
+          <div class="pin-head pin-red"></div>
+          <div class="note note-dark">
+            <span class="note-tag font-mono tag-red">KASUS AKTIF</span>
+            <p class="note-title">Prediksi ISPU Jakarta</p>
+            <p class="note-body">5 algoritma ML, SHAP explainability. Random Forest — 94.2% akurasi.</p>
+            <div class="note-chips"><span class="chip font-mono">ML</span><span class="chip font-mono">Python</span><span class="chip font-mono">SHAP</span></div>
+          </div>
+        </div>
 
-              <div class="pin" style="top:5%; left:50%;">
-                <div class="pin-dot pin-green"></div>
-                <div class="note note-torn note-hover">
-                  <p class="note-label font-mono">WORKSPACE</p>
-                  <p class="note-title">angg4ra.pages.dev</p>
-                  <p class="note-body">Arsitektur web ini. Astro + TypeScript + bento grid.</p>
-                  <div class="note-tags"><span class="ntag ntag-green">Astro</span><span class="ntag">TS</span></div>
-                </div>
-              </div>
+        <div class="pin-item" id="pin-1" style="top:7%;left:34%">
+          <div class="pin-head pin-teal"></div>
+          <div class="note note-warm">
+            <span class="note-tag font-mono tag-teal">ONGOING</span>
+            <p class="note-title">Skripsi — CRM + ML DigiKidz</p>
+            <p class="note-body">Prediksi performa siswa real-time. Lembaga coding sebagai laboratorium data.</p>
+            <div class="note-chips"><span class="chip font-mono">CRM</span><span class="chip font-mono">ML</span><span class="chip font-mono">Laravel</span><span class="chip font-mono">TailwindCSS</span></div>
+          </div>
+        </div>
 
-              <div class="pin" style="top:22%; left:70%;">
-                <div class="pin-dot pin-red"></div>
-                <div class="note note-photo note-hover">
-                  <p class="note-label font-mono">IDENTITAS</p>
-                  <p class="note-title">INTP · Educator · Data Nerd</p>
-                  <p class="note-body">Mentransfer logika pemrograman di fajar, membedah model di malam hari.</p>
-                </div>
-              </div>
+        <div class="pin-item" id="pin-2" style="top:5%;left:64%">
+          <div class="pin-head pin-green"></div>
+          <div class="note note-dark">
+            <span class="note-tag font-mono tag-green">WORKSPACE</span>
+            <p class="note-title">angg4ra.pages.dev</p>
+            <p class="note-body">Portfolio ini — Astro + TypeScript + dark academia bento.</p>
+            <div class="note-chips"><span class="chip font-mono">Astro</span><span class="chip font-mono">TS</span></div>
+          </div>
+        </div>
 
-              <div class="pin" style="top:56%; left:3%;">
-                <div class="pin-dot pin-teal"></div>
-                <div class="note note-small note-hover">
-                  <p class="note-label font-mono">RISET</p>
-                  <p class="note-title">MLOps Dasar</p>
-                  <p class="note-body">Pipeline feature engineering dan automated model deployment.</p>
-                </div>
-              </div>
+        <div class="pin-item" id="pin-3" style="top:52%;left:4%">
+          <div class="pin-head pin-teal"></div>
+          <div class="note note-dark note-sm">
+            <span class="note-tag font-mono tag-teal">RISET</span>
+            <p class="note-title">MLOps Dasar</p>
+            <p class="note-body">Pipeline, feature engineering, model deployment — misi berikutnya.</p>
+          </div>
+        </div>
 
-              <div class="pin" style="top:55%; left:22%;">
-                <div class="pin-dot pin-green"></div>
-                <div class="note note-small note-yellow note-hover">
-                  <p class="note-label font-mono">LOG</p>
-                  <p class="note-title">Lua & Roblox Dev</p>
-                  <p class="note-body">Virtual environment design berbasis objek sejak SMA.</p>
-                </div>
-              </div>
+        <div class="pin-item" id="pin-4" style="top:50%;left:34%">
+          <div class="pin-head pin-red"></div>
+          <div class="note note-warm note-sm">
+            <span class="note-tag font-mono tag-red">IDENTITAS</span>
+            <p class="note-title">INTP · Educator · Data Nerd</p>
+            <p class="note-body">Mengajar logika di fajar, debugging model di malam hari.</p>
+          </div>
+        </div>
 
-              <div class="polaroid" style="top:18%; left:44%; transform:rotate(3deg)">
-                <div class="polaroid-img">📊</div>
-                <p class="polaroid-caption font-mono">METRIK_ISPU</p>
-              </div>
+        <div class="pin-item" id="pin-5" style="top:52%;left:63%">
+          <div class="pin-head pin-green"></div>
+          <div class="note note-dark note-sm">
+            <span class="note-tag font-mono tag-green">LOG</span>
+            <p class="note-title">Roblox Dev</p>
+            <p class="note-body">Lua, game design, virtual environments — sejak SMA.</p>
+          </div>
+        </div>
 
-              <div class="polaroid" style="top:50%; left:52%; transform:rotate(-4deg)">
-                <div class="polaroid-img">🎸</div>
-                <p class="polaroid-caption font-mono">HP_VICTUS_26</p>
-              </div>
+        <!-- POLAROIDS -->
+        <div class="polaroid" style="top:30%;left:26%;transform:rotate(-3deg)" aria-hidden="true">
+          <div class="polaroid-face">📊</div>
+          <p class="polaroid-label font-mono">ISPU_METRICS</p>
+        </div>
 
-              <!-- Sticky note lokasi -->
-              <div class="sticky sticky-teal" style="bottom:5%; right:4%; transform:rotate(1deg)">
-                <p class="font-mono sticky-text">Bekasi, ID 📍</p>
-              </div>
+        <div class="polaroid" style="top:28%;left:57%;transform:rotate(2.5deg)" aria-hidden="true">
+          <div class="polaroid-face">🎓</div>
+          <p class="polaroid-label font-mono">UNINDRA_'23</p>
+        </div>
 
-              <!-- Sticky note tambahan -->
-              <div class="sticky sticky-red" style="bottom:5%; left:42%; transform:rotate(-2deg)">
-                <p class="font-mono sticky-text">67 = jawaban?</p>
+        <!-- STICKY NOTES -->
+        <div class="sticky" style="bottom:6%;left:4%;transform:rotate(-1.5deg)" aria-hidden="true">
+          <p class="font-mono sticky-text">"Pola di balik<br/>noise — itu yang<br/>menarik."</p>
+        </div>
+        <div class="sticky sticky-teal" style="bottom:6%;right:4%;transform:rotate(1deg)" aria-hidden="true">
+          <p class="font-mono sticky-text">Bekasi, ID 📍</p>
+        </div>
+        <div class="sticky sticky-red" style="bottom:6%;left:38%;transform:rotate(-2deg)" aria-hidden="true">
+          <p class="font-mono sticky-text">42 = jawaban?</p>
+        </div>
+
+      </div><!-- /board-wrap -->
+      </div><!-- /board-container -->
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         BOOK ARCHIVE
+    ══════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="section-eyebrow font-mono">/ arsip perpustakaan</p>
+          <p class="section-sub">Katalog bacaan yang memengaruhi cara saya berpikir.</p>
+        </div>
+        <p class="book-count-label font-mono"><span id="book-count">—</span> judul terkatalog</p>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-bar" id="filter-bar" role="tablist">
+        <button class="ftab active font-mono" data-filter="semua" role="tab">Semua</button>
+        <button class="ftab font-mono" data-filter="fiksi" role="tab">Fiksi</button>
+        <button class="ftab font-mono" data-filter="nonfiksi" role="tab">Non-fiksi</button>
+        <button class="ftab font-mono" data-filter="teknis" role="tab">Teknis</button>
+        <button class="ftab font-mono" data-filter="sedang-dibaca" role="tab">Sedang Dibaca</button>
+      </div>
+
+      <!-- Bookshelf (spine view) -->
+      <div class="shelf-container">
+        <div class="shelf-floor"></div>
+        <div class="shelf-books" id="shelf-books">
+          <p class="shelf-loading font-mono" id="shelf-loading">membuka arsip...</p>
+        </div>
+        <!-- Tooltip -->
+        <div class="book-tooltip" id="book-tooltip" style="display:none" aria-hidden="true">
+          <p class="tt-title" id="tt-title">—</p>
+          <p class="tt-author font-mono" id="tt-author">—</p>
+        </div>
+      </div>
+
+      <!-- Detail panel -->
+      <div class="detail-panel" id="detail-panel" style="display:none" role="region" aria-label="Detail buku">
+        <div class="detail-top">
+          <button class="detail-back font-mono" id="detail-back">← kembali</button>
+          <span class="detail-status font-mono" id="detail-status-badge">—</span>
+        </div>
+        <div class="detail-body">
+          <div class="detail-cover-col">
+            <div class="detail-book-shadow">
+              <img id="detail-img" src="" alt="" class="detail-img" />
+              <div class="detail-img-fallback" id="detail-fallback">
+                <span id="detail-fallback-char">?</span>
               </div>
             </div>
           </div>
-        </BentoCard>
-      </div>
-
-      <!-- BOOKSHELF -->
-      <div class="card-xl">
-        <BentoCard size="xl">
-          <div class="library-card">
-            <div class="library-header">
-              <div>
-                <p class="section-label font-mono">/ arsip perpustakaan</p>
-                <p class="library-sub">Katalog literatur yang memengaruhi pola pikir ilmiah dan naratif saya.</p>
-              </div>
-              <div class="library-meta font-mono">
-                <span id="book-count">—</span> judul terdaftar
-              </div>
-            </div>
-
-            <div class="book-filters" id="book-filters">
-              <button class="bfilter active font-mono" data-filter="semua">Semua</button>
-              <button class="bfilter font-mono" data-filter="fiksi">Fiksi</button>
-              <button class="bfilter font-mono" data-filter="nonfiksi">Non-fiksi</button>
-              <button class="bfilter font-mono" data-filter="teknis">Teknis</button>
-              <button class="bfilter font-mono" data-filter="sedang-dibaca">Sedang Dipelajari</button>
-            </div>
-
-            <!-- VISUAL BOOKSHELF RAK -->
-            <div class="shelf-visual" id="bookshelf">
-              <div class="shelf-loading font-mono" id="shelf-loading">membuka enkripsi arsip...</div>
-            </div>
-
-            <!-- TOOLTIP hover -->
-            <div class="book-tooltip" id="book-tooltip" style="display:none">
-              <p class="tooltip-title font-mono" id="tt-title">—</p>
-              <p class="tooltip-author font-mono" id="tt-author">—</p>
-            </div>
-
-            <!-- DETAIL PANEL -->
-            <div class="book-detail" id="book-detail" style="display:none">
-              <button class="detail-close font-mono" id="detail-close">← kembali ke rak</button>
-              <div class="detail-inner">
-                <div class="detail-cover-container">
-                  <img id="detail-cover" src="" alt="" class="detail-cover" />
-                  <div class="detail-cover-fallback" id="detail-cover-fallback" style="display:none">
-                    <span id="detail-cover-initial">?</span>
-                  </div>
-                </div>
-                <div class="detail-info">
-                  <p class="detail-genre font-mono" id="detail-genre">—</p>
-                  <h3 class="detail-title" id="detail-title">—</h3>
-                  <p class="detail-author font-mono" id="detail-author">—</p>
-                  <p class="detail-year font-mono" id="detail-year">—</p>
-                  <div class="detail-divider"></div>
-                  <p class="detail-note" id="detail-note">—</p>
-                  <span class="detail-status font-mono" id="detail-status">—</span>
-                </div>
-              </div>
-            </div>
-
+          <div class="detail-text-col">
+            <p class="detail-genre font-mono" id="detail-genre">—</p>
+            <h2 class="detail-title" id="detail-title">—</h2>
+            <p class="detail-author font-mono" id="detail-author">—</p>
+            <p class="detail-year font-mono" id="detail-year">—</p>
+            <div class="detail-rule"></div>
+            <blockquote class="detail-note" id="detail-note">—</blockquote>
           </div>
-        </BentoCard>
+        </div>
       </div>
 
-    </div>
-  </div>
+    </section>
+
+  </div><!-- /page-wrap -->
 </BaseLayout>
 
+<!-- ============================================================
+     DATA
+============================================================ -->
 <script>
+// ── BOOKS ──────────────────────────────────────────────────────
 const BOOKS = [
-  {
-    title: "The Adventures of Sherlock Holmes",
-    author: "Arthur Conan Doyle",
-    year: "1892",
-    isbn: "9780140439076",
-    genre: "fiksi",
-    status: "sedang-dibaca",
-    note: "Cara Holmes mengamati detail kecil dan menarik kesimpulan dari noise — ini yang bikin saya tertarik ke data.",
-    color: "#8C4A2E"
-  },
-  {
-    title: "Thinking, Fast and Slow",
-    author: "Daniel Kahneman",
-    year: "2011",
-    isbn: "9780374533557",
-    genre: "nonfiksi",
-    status: "selesai",
-    note: "Buku yang mengubah cara saya melihat pengambilan keputusan. System 1 vs System 2 — relevan banget ke ML.",
-    color: "#2E4A8C"
-  },
-  {
-    title: "The Hitchhiker's Guide to the Galaxy",
-    author: "Douglas Adams",
-    year: "1979",
-    isbn: "9780345391803",
-    genre: "fiksi",
-    status: "selesai",
-    note: "42. Humor absurd tentang semesta yang dibangun dari logika yang konsisten — somehow relatable.",
-    color: "#4A8C2E"
-  },
-  {
-    title: "Hands-On Machine Learning",
-    author: "Aurélien Géron",
-    year: "2022",
-    isbn: "9781098125974",
-    genre: "teknis",
-    status: "sedang-dibaca",
-    note: "Referensi utama waktu ngerjain proyek ISPU Jakarta. Dense tapi solid.",
-    color: "#8C2E2E"
-  },
-  {
-    title: "The Signal and the Noise",
-    author: "Nate Silver",
-    year: "2012",
-    isbn: "9780143125082",
-    genre: "nonfiksi",
-    status: "selesai",
-    note: "Prediksi itu bukan soal kepastian — soal seberapa baik kita mengukur ketidakpastian.",
-    color: "#6B4A8C"
-  },
-  {
-    title: "1984",
-    author: "George Orwell",
-    year: "1949",
-    isbn: "9780451524935",
-    genre: "fiksi",
-    status: "selesai",
-    note: "Data sebagai alat kontrol. Distopia ini semakin relevan tiap tahun.",
-    color: "#2E2E2E"
-  },
-  {
-    title: "Python Data Science Handbook",
-    author: "Jake VanderPlas",
-    year: "2016",
-    isbn: "9781491912058",
-    genre: "teknis",
-    status: "selesai",
-    note: "NumPy, Pandas, Matplotlib, Scikit-learn — buku ini yang ngajarin fondasi pipeline data saya.",
-    color: "#1A6B8C"
-  },
-  {
-    title: "Sapiens",
-    author: "Yuval Noah Harari",
-    year: "2011",
-    isbn: "9780062316097",
-    genre: "nonfiksi",
-    status: "selesai",
-    note: "Cara manusia membangun sistem kolektif dari cerita yang disepakati bersama. Basis dari segalanya.",
-    color: "#8C6B2E"
-  },
-  {
-    title: "The Name of the Wind",
-    author: "Patrick Rothfuss",
-    year: "2007",
-    isbn: "9780756404079",
-    genre: "fiksi",
-    status: "selesai",
-    note: "Storytelling yang terlalu bagus untuk dilewatkan. Kvothe adalah karakter yang terlalu INTP.",
-    color: "#5C2E8C"
-  },
-  {
-    title: "Deep Work",
-    author: "Cal Newport",
-    year: "2016",
-    isbn: "9781455586691",
-    genre: "nonfiksi",
-    status: "selesai",
-    note: "Fokus dalam yang dalam adalah superpower langka. Relevan banget di era notifikasi tiap 5 detik.",
-    color: "#2E5C8C"
-  },
-  {
-    title: "Clean Code",
-    author: "Robert C. Martin",
-    year: "2008",
-    isbn: "9780132350884",
-    genre: "teknis",
-    status: "selesai",
-    note: "Kode yang baik bukan yang pintar — yang bisa dibaca orang lain enam bulan kemudian.",
-    color: "#3A5C3A"
-  },
-  {
-    title: "Flowers for Algernon",
-    author: "Daniel Keyes",
-    year: "1966",
-    isbn: "9780156030304",
-    genre: "fiksi",
-    status: "selesai",
-    note: "Novel paling emosional yang pernah saya baca. Kecerdasan tanpa kebijaksanaan adalah beban.",
-    color: "#8C3A5C"
-  },
+  { title:"The Adventures of Sherlock Holmes", author:"Arthur Conan Doyle",  year:"1892", isbn:"9780140439076", genre:"fiksi",    status:"sedang-dibaca", color:"#6B3A2A", note:"Cara Holmes menarik kesimpulan dari noise kecil — ini yang bikin saya tertarik ke data." },
+  { title:"Thinking, Fast and Slow",           author:"Daniel Kahneman",     year:"2011", isbn:"9780374533557", genre:"nonfiksi", status:"selesai",        color:"#2A3F6B", note:"System 1 vs System 2. Buku ini mengubah cara saya melihat pengambilan keputusan — dan desain model." },
+  { title:"The Hitchhiker's Guide to Galaxy",  author:"Douglas Adams",       year:"1979", isbn:"9780345391803", genre:"fiksi",    status:"selesai",        color:"#2E6B3A", note:"42. Humor absurd tentang semesta yang dibangun dari logika yang konsisten — somehow relatable." },
+  { title:"Hands-On Machine Learning",         author:"Aurélien Géron",      year:"2022", isbn:"9781098125974", genre:"teknis",  status:"sedang-dibaca", color:"#6B2A2A", note:"Referensi utama waktu ngerjain proyek ISPU Jakarta. Dense tapi solid banget." },
+  { title:"The Signal and the Noise",          author:"Nate Silver",         year:"2012", isbn:"9780143125082", genre:"nonfiksi", status:"selesai",        color:"#5A3A7A", note:"Prediksi bukan soal kepastian — soal seberapa baik kita mengukur ketidakpastian itu sendiri." },
+  { title:"1984",                              author:"George Orwell",       year:"1949", isbn:"9780451524935", genre:"fiksi",    status:"selesai",        color:"#222222", note:"Data sebagai alat kontrol. Distopia ini semakin relevan tiap tahun yang berlalu." },
+  { title:"Python Data Science Handbook",      author:"Jake VanderPlas",     year:"2016", isbn:"9781491912058", genre:"teknis",  status:"selesai",        color:"#1A5C7A", note:"NumPy, Pandas, Scikit-learn — fondasi pipeline data science saya berasal dari sini." },
+  { title:"Sapiens",                           author:"Yuval Noah Harari",   year:"2011", isbn:"9780062316097", genre:"nonfiksi", status:"selesai",        color:"#6B5020", note:"Manusia membangun sistem kolektif dari cerita yang disepakati bersama. Basis dari segalanya." },
+  { title:"The Name of the Wind",              author:"Patrick Rothfuss",    year:"2007", isbn:"9780756404079", genre:"fiksi",    status:"selesai",        color:"#4A1F6B", note:"Storytelling terlalu bagus untuk dilewatkan. Kvothe adalah karakter yang terlalu INTP." },
+  { title:"Deep Work",                         author:"Cal Newport",         year:"2016", isbn:"9781455586691", genre:"nonfiksi", status:"selesai",        color:"#1E4A6B", note:"Fokus dalam yang dalam adalah superpower langka — paling relevan di era notifikasi tiap 5 detik." },
+  { title:"Clean Code",                        author:"Robert C. Martin",    year:"2008", isbn:"9780132350884", genre:"teknis",  status:"selesai",        color:"#2E4A2E", note:"Kode yang baik bukan yang paling pintar — yang bisa dibaca orang lain enam bulan kemudian." },
+  { title:"Flowers for Algernon",              author:"Daniel Keyes",        year:"1966", isbn:"9780156030304", genre:"fiksi",    status:"selesai",        color:"#6B2A4A", note:"Novel paling emosional yang pernah saya baca. Kecerdasan tanpa kebijaksanaan adalah beban." },
 ];
 
-// === SPOTIFY ===
-const SPOTIFY_CONFIG = {
-  CLIENT_ID: '0eaa7f17c9b044cabbb1dc54ad3b1af7',
-  CLIENT_SECRET: 'GANTI_DENGAN_CLIENT_SECRET',
-  REFRESH_TOKEN: 'GANTI_DENGAN_REFRESH_TOKEN',
+// ── STRINGS / CONNECTIONS ─────────────────────────────────────
+const CONNECTIONS = [
+  { from: "pin-0", to: "pin-1", color: "#6B2D3E", dash: false },
+  { from: "pin-1", to: "pin-2", color: "#6B2D3E", dash: false },
+  { from: "pin-1", to: "pin-3", color: "#3A6B7A", dash: false },
+  { from: "pin-2", to: "pin-5", color: "#4A7A52", dash: true  },
+  { from: "pin-0", to: "pin-4", color: "#7A5A3A", dash: true  },
+  { from: "pin-3", to: "pin-4", color: "#3A6B7A", dash: true  },
+];
+
+// ── NOTE DETAIL DATA ──────────────────────────────────────────
+const NOTE_DETAILS: Record<string, {
+  tag: string; tagColor: string; title: string; body: string;
+  extra?: string; chips?: string[];
+}> = {
+  "pin-0": {
+    tag: "KASUS AKTIF", tagColor: "#A05060",
+    title: "Prediksi ISPU Jakarta",
+    body: "5 algoritma ML, SHAP explainability. Random Forest — 94.2% akurasi.",
+    extra: "Proyek ini menganalisis data kualitas udara Jakarta dari stasiun BMKG dan menggunakan SHAP untuk menjelaskan prediksi tiap hari. Tujuan akhir: sistem peringatan dini berbasis ML yang bisa digunakan oleh warga biasa.",
+    chips: ["ML", "Python", "SHAP", "Random Forest"]
+  },
+  "pin-1": {
+    tag: "ONGOING", tagColor: "#407888",
+    title: "Skripsi — CRM + ML DigiKidz",
+    body: "Prediksi performa siswa real-time. Lembaga coding sebagai laboratorium data.",
+    extra: "Sistem CRM yang diintegrasikan dengan model prediksi dropout siswa. Menggunakan data kehadiran, nilai kuis, dan pola interaksi untuk mengidentifikasi siswa yang butuh perhatian lebih sebelum mereka menyerah.",
+    chips: ["CRM", "ML", "Laravel", "TailwindCSS"]
+  },
+  "pin-2": {
+    tag: "WORKSPACE", tagColor: "#507A5A",
+    title: "angg4ra.pages.dev",
+    body: "Portfolio ini — Astro + TypeScript + dark academia bento.",
+    extra: "Dibangun dengan Astro untuk performa maksimal, desain 'dark academia bento' yang menggabungkan estetika perpustakaan tua dengan layout bento grid modern. TypeScript untuk type safety penuh.",
+    chips: ["Astro", "TypeScript", "CSS", "Cloudflare"]
+  },
+  "pin-3": {
+    tag: "RISET", tagColor: "#407888",
+    title: "MLOps Dasar",
+    body: "Pipeline, feature engineering, model deployment — misi berikutnya.",
+    extra: "Roadmap: MLflow untuk experiment tracking, FastAPI untuk serving model, Docker untuk containerization. Target: bisa deploy model ML ke production dalam < 1 jam dari notebook.",
+    chips: ["MLflow", "FastAPI", "Docker"]
+  },
+  "pin-4": {
+    tag: "IDENTITAS", tagColor: "#A05060",
+    title: "INTP · Educator · Data Nerd",
+    body: "Mengajar logika di fajar, debugging model di malam hari.",
+    extra: "Guru coding di DigiKidz pagi hari, mahasiswa + researcher malam hari. INTP yang sangat percaya bahwa mengajar adalah cara terbaik untuk benar-benar memahami sesuatu.",
+    chips: ["MBTI: INTP", "Bekasi, ID"]
+  },
+  "pin-5": {
+    tag: "LOG", tagColor: "#507A5A",
+    title: "Roblox Dev",
+    body: "Lua, game design, virtual environments — sejak SMA.",
+    extra: "Mulai ngoding dari Roblox Studio waktu SMA — Lua jadi bahasa pertama. Dari sana ke web, lalu ke data science. Game design mengajarkan cara berpikir sistem yang ternyata sangat berguna di ML.",
+    chips: ["Lua", "Roblox Studio", "Game Design"]
+  },
 };
 
-async function fetchSpotify() {
-  const loading = document.getElementById('spotify-loading');
-  const content = document.getElementById('spotify-content');
-  const error   = document.getElementById('spotify-error');
+// ── HIGHLIGHT CONNECTED PINS ──────────────────────────────────
+function initPinHighlight() {
+  const svg = document.getElementById("strings-svg") as unknown as SVGSVGElement | null;
+  const allPins = document.querySelectorAll<HTMLElement>(".pin-item");
 
-  const isDummy = SPOTIFY_CONFIG.REFRESH_TOKEN === 'GANTI_DENGAN_REFRESH_TOKEN'
-               || SPOTIFY_CONFIG.CLIENT_SECRET === 'GANTI_DENGAN_CLIENT_SECRET';
+  allPins.forEach(pin => {
+    pin.addEventListener("mouseenter", () => {
+      const hoveredId = pin.id;
 
-  if (isDummy) {
-    showSpotifyContent({
-      name: 'Acoustic & Lo-Fi Session',
-      artist: 'Ambient Collector',
-      albumArt: null,
-      isPlaying: false,
-      statusText: 'terakhir diputar',
-    });
-    return;
-  }
-
-  try {
-    const tokenRes = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + btoa(SPOTIFY_CONFIG.CLIENT_ID + ':' + SPOTIFY_CONFIG.CLIENT_SECRET),
-      },
-      body: new URLSearchParams({
-        grant_type: 'refresh_token',
-        refresh_token: SPOTIFY_CONFIG.REFRESH_TOKEN,
-      }),
-    });
-    const { access_token } = await tokenRes.json();
-
-    const nowRes = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-      headers: { 'Authorization': `Bearer ${access_token}` },
-    });
-
-    if (nowRes.status === 200) {
-      const data = await nowRes.json();
-      if (data && data.item) {
-        showSpotifyContent({
-          name: data.item.name,
-          artist: data.item.artists.map((a: any) => a.name).join(', '),
-          albumArt: data.item.album.images[0]?.url || null,
-          isPlaying: data.is_playing,
-          statusText: data.is_playing ? 'sedang diputar' : 'dijeda',
-        });
-        return;
-      }
-    }
-
-    const recentRes = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
-      headers: { 'Authorization': `Bearer ${access_token}` },
-    });
-    const recentData = await recentRes.json();
-    const track = recentData.items?.[0]?.track;
-    if (track) {
-      showSpotifyContent({
-        name: track.name,
-        artist: track.artists.map((a: any) => a.name).join(', '),
-        albumArt: track.album.images[0]?.url || null,
-        isPlaying: false,
-        statusText: 'terakhir diputar',
+      // find connected pin IDs
+      const connectedIds = new Set<string>();
+      CONNECTIONS.forEach(conn => {
+        if (conn.from === hoveredId) connectedIds.add(conn.to);
+        if (conn.to   === hoveredId) connectedIds.add(conn.from);
       });
-    } else {
-      showError();
-    }
-  } catch (e) {
-    showError();
-  }
 
-  function showSpotifyContent({ name, artist, albumArt, isPlaying, statusText }: any) {
-    if (!loading || !content) return;
-    loading.style.display = 'none';
-    content.style.display = 'block';
+      // dim/highlight pins
+      allPins.forEach(p => {
+        if (p.id === hoveredId) {
+          p.style.filter = "brightness(1.3) drop-shadow(0 0 8px rgba(255,255,255,0.25))";
+          p.style.zIndex = "10";
+        } else if (connectedIds.has(p.id)) {
+          p.style.filter = "brightness(1.1) drop-shadow(0 0 6px rgba(255,255,255,0.15))";
+          p.style.zIndex = "9";
+          p.style.opacity = "1";
+        } else {
+          p.style.opacity = "0.3";
+          p.style.filter  = "none";
+        }
+      });
 
-    const tn = document.getElementById('track-name');
-    const ta = document.getElementById('track-artist');
-    const st = document.getElementById('status-text');
-    if (tn) tn.textContent = name;
-    if (ta) ta.textContent = artist;
-    if (st) st.textContent = statusText;
+      // highlight connected strings, dim others
+      if (svg) {
+        svg.querySelectorAll("path").forEach((path, i) => {
+          const conn = CONNECTIONS[i];
+          if (!conn) return;
+          if (conn.from === hoveredId || conn.to === hoveredId) {
+            path.setAttribute("opacity", "1");
+            path.setAttribute("stroke-width", "2");
+          } else {
+            path.setAttribute("opacity", "0.08");
+          }
+        });
+      }
+    });
 
-    const dotLive = document.getElementById('dot-live');
-    if (dotLive) {
-      isPlaying ? dotLive.classList.add('live') : dotLive.classList.remove('live');
-    }
-
-    const vinyl = document.getElementById('vinyl-disc-playing');
-    if (vinyl) {
-      isPlaying ? vinyl.classList.add('spinning') : vinyl.classList.remove('spinning');
-    }
-
-    if (albumArt) {
-      const img = document.getElementById('track-art') as HTMLImageElement;
-      if (img) { img.src = albumArt; img.style.display = 'block'; }
-    }
-  }
-
-  function showError() {
-    if (loading) loading.style.display = 'none';
-    if (error) error.style.display = 'block';
-  }
-}
-
-// === DETECTIVE BOARD: BENANG MERAH ===
-function initDetectiveStrings() {
-  const board = document.getElementById('detective-board');
-  const svg = document.getElementById('string-svg') as unknown as SVGElement;
-  if (!board || !svg) return;
-
-  const pins = board.querySelectorAll('.pin');
-  const pinPositions: { cx: number; cy: number }[] = [];
-
-  pins.forEach(pin => {
-    const el = pin as HTMLElement;
-    const rect = el.getBoundingClientRect();
-    const boardRect = board.getBoundingClientRect();
-    pinPositions.push({
-      cx: rect.left - boardRect.left + rect.width / 2,
-      cy: rect.top - boardRect.top + rect.height / 2,
+    pin.addEventListener("mouseleave", () => {
+      allPins.forEach(p => {
+        p.style.opacity = "";
+        p.style.filter  = "";
+        p.style.zIndex  = "2";
+      });
+      if (svg) {
+        svg.querySelectorAll("path").forEach((path, i) => {
+          const conn = CONNECTIONS[i];
+          path.setAttribute("opacity", "0.65");
+          path.setAttribute("stroke-width", "1.2");
+          if (conn?.dash) path.setAttribute("stroke-dasharray", "4 4");
+        });
+      }
     });
   });
+}
 
-  // Update SVG lines berdasarkan posisi pin nyata
-  const lines = svg.querySelectorAll('line');
-  const connections = [
-    [0, 1], // ISPU → Proposal
-    [1, 2], // Proposal → Website
-    [2, 3], // Website → Identitas
-    [1, 4], // Proposal → MLOps
-    [2, 5], // Website → Lua
-  ];
+// ── CURSOR GLOW ───────────────────────────────────────────────
+function initCursorGlow() {
+  const board = document.querySelector<HTMLElement>(".board-wrap");
+  const glow  = document.getElementById("board-glow");
+  if (!board || !glow) return;
 
-  lines.forEach((line, i) => {
-    const conn = connections[i];
-    if (!conn || !pinPositions[conn[0]] || !pinPositions[conn[1]]) return;
-    const a = pinPositions[conn[0]];
-    const b = pinPositions[conn[1]];
-    line.setAttribute('x1', String(a.cx));
-    line.setAttribute('y1', String(a.cy));
-    line.setAttribute('x2', String(b.cx));
-    line.setAttribute('y2', String(b.cy));
+  let glowX = 0, glowY = 0;
+  let targetX = 0, targetY = 0;
+  let inside = false;
+  let raf: number;
+
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+  const animate = () => {
+    glowX = lerp(glowX, targetX, 0.07);
+    glowY = lerp(glowY, targetY, 0.07);
+    glow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
+    raf = requestAnimationFrame(animate);
+  };
+
+  board.addEventListener("mouseenter", () => {
+    inside = true;
+    glow.style.opacity = "1";
+    raf = requestAnimationFrame(animate);
+  });
+
+  board.addEventListener("mouseleave", () => {
+    inside = false;
+    glow.style.opacity = "0";
+    cancelAnimationFrame(raf);
+  });
+
+  board.addEventListener("mousemove", (e: MouseEvent) => {
+    const rect = board.getBoundingClientRect();
+    targetX = e.clientX - rect.left;
+    targetY = e.clientY - rect.top;
   });
 }
 
-// === BOOKSHELF ===
+// ── CAT BLINKING ──────────────────────────────────────────────
+function initCat() {
+  const eyes = document.querySelectorAll<HTMLElement>(".cat-eye");
+  if (!eyes.length) return;
+  const blink = () => {
+    eyes.forEach(e => e.classList.add("cat-blink"));
+    setTimeout(() => eyes.forEach(e => e.classList.remove("cat-blink")), 150);
+    setTimeout(blink, 2500 + Math.random() * 3000);
+  };
+  setTimeout(blink, 1500);
+}
+
+function initInteractiveCat() {
+  const cat = document.getElementById("board-cat");
+  const bubble = document.getElementById("cat-bubble");
+  const container = document.querySelector(".board-container");
+  
+  if (!cat || !container) return;
+
+  let isDragging = false;
+  let hasMoved = false;
+  let startX = 0;
+  let origLeft = cat.offsetLeft;
+  let purrTimeout;
+
+  // ── FUNGSI TAP / KLIK (Mendengkur & Merubah Ekspresi) ──
+  const handleTap = () => {
+    // Aktifkan gelembung ucapan
+    if (bubble) {
+      bubble.style.opacity = "1";
+      bubble.style.transform = "translateX(-22%) translateY(-10px) scale(1)";
+    }
+    
+    // Ubah ekspresi mata & beri efek getar mendengkur
+    cat.classList.add("cat-happy", "cat-purring");
+
+    // Kembalikan ke normal setelah 2.5 detik
+    clearTimeout(purrTimeout);
+    purrTimeout = setTimeout(() => {
+      if (bubble) {
+        bubble.style.opacity = "0";
+        bubble.style.transform = "translateX(-22%) translateY(6px) scale(0.94)";
+      }
+      cat.classList.remove("cat-happy", "cat-purring");
+    }, 2500);
+  };
+
+  // ── FUNGSI DRAG (Hanya Kanan & Kiri) ──
+  const getX = (e) => ("touches" in e ? e.touches[0].clientX : e.clientX);
+
+  const onStart = (e) => {
+    if (e instanceof MouseEvent) e.preventDefault();
+    isDragging = true;
+    hasMoved = false;
+    startX = getX(e);
+    origLeft = cat.offsetLeft;
+    cat.style.transition = "none";
+  };
+
+  const onMove = (e) => {
+    if (!isDragging) return;
+    const currentX = getX(e);
+    const dx = currentX - startX;
+
+    // Jika bergeser lebih dari 5 pixel, tandai sebagai aktivitas drag
+    if (Math.abs(dx) > 5) hasMoved = true;
+
+    if (!hasMoved) return;
+
+    const containerWidth = container.getBoundingClientRect().width;
+    let newLeft = origLeft + dx;
+
+    // Batasi area geser agar tidak keluar layar board (0% sampai ~90%)
+    const maxLeft = containerWidth - cat.getBoundingClientRect().width;
+    if (newLeft < 0) newLeft = 0;
+    if (newLeft > maxLeft) newLeft = maxLeft;
+
+    cat.style.left = `${newLeft}px`;
+  };
+
+  const onEnd = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    cat.style.transition = "transform 0.1s ease, left 0.2s ease";
+
+    // Jika cuma ditekan (tidak digeser), picu fungsi mendengkur
+    if (!hasMoved) {
+      handleTap();
+    }
+  };
+
+  // Event listener untuk Mouse dan Touch (HP)
+  cat.addEventListener("mousedown", onStart);
+  cat.addEventListener("touchstart", onStart, { passive: true });
+  
+  document.addEventListener("mousemove", onMove);
+  document.addEventListener("touchmove", onMove, { passive: false });
+  
+  document.addEventListener("mouseup", onEnd);
+  document.addEventListener("touchend", onEnd);
+}
+
+// Panggil fungsinya di dalam inisialisasi utama web Anda
+document.addEventListener("DOMContentLoaded", () => {
+  initInteractiveCat();
+});
+
+function drawStrings() {
+  const svg = document.getElementById("strings-svg");
+  const board = svg?.parentElement;
+  if (!svg || !board) return;
+
+  const boardRect = board.getBoundingClientRect();
+  svg.setAttribute("viewBox", `0 0 ${boardRect.width} ${boardRect.height}`);
+  svg.innerHTML = "";
+
+  CONNECTIONS.forEach(conn => {
+    const fromEl = document.getElementById(conn.from);
+    const toEl   = document.getElementById(conn.to);
+    if (!fromEl || !toEl) return;
+    const fromDot = fromEl.querySelector(".pin-head");
+    const toDot   = toEl.querySelector(".pin-head");
+    if (!fromDot || !toDot) return;
+
+    const fr = fromDot.getBoundingClientRect();
+    const tr = toDot.getBoundingClientRect();
+    const x1 = fr.left - boardRect.left + fr.width / 2;
+    const y1 = fr.top  - boardRect.top  + fr.height / 2;
+    const x2 = tr.left - boardRect.left + tr.width / 2;
+    const y2 = tr.top  - boardRect.top  + tr.height / 2;
+    const mx = (x1 + x2) / 2;
+    const my = (y1 + y2) / 2 + 18;
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", `M${x1},${y1} Q${mx},${my} ${x2},${y2}`);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", conn.color);
+    path.setAttribute("stroke-width", "1.2");
+    path.setAttribute("opacity", "0.65");
+    if (conn.dash) path.setAttribute("stroke-dasharray", "4 4");
+    svg.appendChild(path);
+  });
+}
+
+// ── DRAG & DROP ───────────────────────────────────────────────
+function initDrag() {
+  const board = document.querySelector(".board-wrap") as HTMLElement;
+  if (!board) return;
+
+  document.querySelectorAll<HTMLElement>(".pin-item").forEach(pin => {
+    let isDragging = false;
+    let hasMoved = false;
+    let startX = 0, startY = 0;
+    let origLeft = 0, origTop = 0;
+
+    const getPos = (e: MouseEvent | TouchEvent) => {
+      const t = "touches" in e ? e.touches[0] : e;
+      return { x: t.clientX, y: t.clientY };
+    };
+
+    const onStart = (e: MouseEvent | TouchEvent) => {
+      // Prevent text selection highlight during drag
+      if (e instanceof MouseEvent) e.preventDefault();
+      isDragging = true;
+      hasMoved = false;
+      const pos = getPos(e);
+      startX = pos.x;
+      startY = pos.y;
+      origLeft = pin.offsetLeft;
+      origTop  = pin.offsetTop;
+      pin.style.zIndex = "20";
+      pin.style.transition = "none";
+      board.style.userSelect = "none";
+    };
+
+    const onMove = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      const pos = getPos(e);
+      const dx = pos.x - startX;
+      const dy = pos.y - startY;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
+      if (!hasMoved) return;
+      e.preventDefault();
+
+      const boardRect = board.getBoundingClientRect();
+      const newLeft = ((origLeft + dx) / boardRect.width)  * 100;
+      const newTop  = ((origTop  + dy) / boardRect.height) * 100;
+      pin.style.left = `${Math.max(0, Math.min(95, newLeft))}%`;
+      pin.style.top  = `${Math.max(0, Math.min(90, newTop))}%`;
+      drawStrings();
+    };
+
+    const onEnd = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+      pin.style.transition = "";
+      pin.style.zIndex = "2";
+      board.style.userSelect = "";
+    };
+
+    pin.addEventListener("mousedown",  onStart);
+    pin.addEventListener("touchstart", onStart, { passive: true });
+    document.addEventListener("mousemove",  onMove);
+    document.addEventListener("touchmove",  onMove, { passive: false });
+    document.addEventListener("mouseup",    onEnd);
+    document.addEventListener("touchend",   onEnd);
+
+    // style as draggable
+    pin.style.cursor = "grab";
+    pin.querySelector<HTMLElement>(".note")!.style.cursor = "grab";
+  });
+}
+
+// ── MOBILE BOARD CARDS ────────────────────────────────────────
+function isMobile() { return window.innerWidth < 640; }
+
+function renderMobileBoard() {
+  const board = document.querySelector(".board-wrap");
+  if (!board) return;
+
+  // Already converted
+  if (board.classList.contains("board-mobile")) return;
+  board.classList.add("board-mobile");
+
+  const cardList = document.createElement("div");
+  cardList.className = "mobile-card-list";
+
+  Object.entries(NOTE_DETAILS).forEach(([pinId, data]) => {
+    const pinEl = document.getElementById(pinId);
+    if (!pinEl) return;
+    const pinHead = pinEl.querySelector(".pin-head");
+    const pinColor = pinHead?.classList.contains("pin-red")   ? "#8B3A4A"
+                   : pinHead?.classList.contains("pin-teal")  ? "#3A7A8B"
+                   : "#4A8A5A";
+
+    const card = document.createElement("div");
+    card.className = "mobile-card";
+    card.innerHTML = `
+      <div class="mc-pin" style="background:${pinColor};box-shadow:0 0 7px ${pinColor}88"></div>
+      <div class="mc-body">
+        <span class="mc-tag font-mono" style="color:${data.tagColor}">${data.tag}</span>
+        <p class="mc-title">${data.title}</p>
+        <p class="mc-body-text">${data.body}</p>
+        ${data.chips ? `<div class="mc-chips">${data.chips.map(c => `<span class="chip font-mono">${c}</span>`).join("")}</div>` : ""}
+      </div>`;
+
+    cardList.appendChild(card);
+  });
+
+  board.innerHTML = "";
+  board.appendChild(cardList);
+}
+
+// ── BOOKS ─────────────────────────────────────────────────────
 const coverCache: Record<string, string | null> = {};
 
-async function fetchCover(isbn: string) {
-  if (coverCache[isbn] !== undefined) return coverCache[isbn];
+async function fetchCover(isbn: string): Promise<string | null> {
+  if (isbn in coverCache) return coverCache[isbn];
   const url = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`;
   try {
     const res = await fetch(url);
-    if (res.ok) { coverCache[isbn] = url; return url; }
-  } catch {}
-  coverCache[isbn] = null;
-  return null;
+    coverCache[isbn] = res.ok ? url : null;
+  } catch { coverCache[isbn] = null; }
+  return coverCache[isbn];
 }
 
-function statusLabel(s: string) {
-  if (s === 'selesai') return 'Selesai Dibaca';
-  if (s === 'sedang-dibaca') return 'Sedang Dibaca';
-  return 'Wishlist';
-}
+const statusLabel = (s: string) =>
+  s === "selesai" ? "Selesai Dibaca" : s === "sedang-dibaca" ? "Sedang Dibaca" : "Wishlist";
 
-function statusClass(s: string) {
-  if (s === 'selesai') return 'bs-done';
-  if (s === 'sedang-dibaca') return 'bs-reading';
-  return 'bs-wish';
-}
+const statusClass = (s: string) =>
+  s === "selesai" ? "bs-done" : s === "sedang-dibaca" ? "bs-reading" : "bs-wish";
 
-async function renderBooks(filter = 'semua') {
-  const shelf = document.getElementById('bookshelf');
-  const loading = document.getElementById('shelf-loading');
-  if (!shelf || !loading) return;
+let allSpines: HTMLElement[] = [];
 
-  const filtered = filter === 'semua'
-    ? BOOKS
-    : filter === 'sedang-dibaca'
-      ? BOOKS.filter(b => b.status === 'sedang-dibaca')
-      : BOOKS.filter(b => b.genre === filter);
+async function renderShelf(filter = "semua") {
+  const shelf   = document.getElementById("shelf-books")!;
+  const loading = document.getElementById("shelf-loading")!;
+  const tooltip = document.getElementById("book-tooltip")!;
+  const detail  = document.getElementById("detail-panel")!;
 
-  const countEl = document.getElementById('book-count');
-  if (countEl) countEl.textContent = BOOKS.length.toString();
-
-  loading.style.display = 'block';
-  shelf.innerHTML = '';
+  detail.style.display = "none";
+  tooltip.style.display = "none";
+  shelf.innerHTML = "";
+  loading.style.display = "block";
   shelf.appendChild(loading);
 
-  const fragment = document.createDocumentFragment();
+  const filtered = filter === "semua"
+    ? BOOKS
+    : filter === "sedang-dibaca"
+      ? BOOKS.filter(b => b.status === "sedang-dibaca")
+      : BOOKS.filter(b => b.genre === filter);
 
-  await Promise.all(filtered.map(async (book, i) => {
-    const coverUrl = await fetchCover(book.isbn);
-    const spine = document.createElement('div');
-    spine.className = 'book-spine';
-    spine.dataset.index = i.toString();
-    spine.style.setProperty('--spine-color', book.color || '#333');
-    spine.setAttribute('title', book.title);
+  const countEl = document.getElementById("book-count");
+  if (countEl) countEl.textContent = BOOKS.length.toString();
 
-    // Hanya tampilkan cover saja, tanpa nama
+  const covers = await Promise.all(filtered.map(b => fetchCover(b.isbn)));
+  loading.style.display = "none";
+  allSpines = [];
+
+  const mobile = isMobile();
+
+  filtered.forEach((book, i) => {
+    const coverUrl = covers[i];
+    const spine = document.createElement("div");
+    spine.className = "spine";
+    // Smaller, consistent heights on mobile
+    const h = mobile
+      ? Math.floor(95 + Math.random() * 22)
+      : Math.floor(130 + Math.random() * 40);
+    spine.style.cssText = `--sc:${book.color};--sh:${h}px`;
+
     spine.innerHTML = `
       <div class="spine-inner">
         ${coverUrl
-          ? `<img src="${coverUrl}" alt="${book.title}" class="spine-cover" loading="lazy" />`
-          : `<div class="spine-fallback" style="background:${book.color || '#333'}">
-               <span class="spine-initial">${book.title.charAt(0)}</span>
-             </div>`
-        }
-        ${book.status === 'sedang-dibaca' ? '<div class="spine-reading-dot"></div>' : ''}
-      </div>
-    `;
+          ? `<img src="${coverUrl}" alt="${book.title}" class="spine-img" loading="lazy"/>`
+          : `<div class="spine-fallback"><span class="spine-char">${book.title[0]}</span></div>`}
+        ${book.status === "sedang-dibaca" ? `<div class="reading-dot"></div>` : ""}
+      </div>`;
 
-    // Hover tooltip
-    const tooltip = document.getElementById('book-tooltip');
-    const ttTitle = document.getElementById('tt-title');
-    const ttAuthor = document.getElementById('tt-author');
-
-    spine.addEventListener('mouseenter', (e) => {
-      if (tooltip && ttTitle && ttAuthor) {
-        ttTitle.textContent = book.title;
-        ttAuthor.textContent = book.author;
-        tooltip.style.display = 'block';
-        positionTooltip(e as MouseEvent, tooltip);
-      }
-    });
-    spine.addEventListener('mousemove', (e) => {
-      if (tooltip) positionTooltip(e as MouseEvent, tooltip);
-    });
-    spine.addEventListener('mouseleave', () => {
-      if (tooltip) tooltip.style.display = 'none';
-    });
-
-    spine.addEventListener('click', () => {
-      if (tooltip) tooltip.style.display = 'none';
-      openDetail(book, coverUrl);
-    });
-    fragment.appendChild(spine);
-  }));
-
-  loading.style.display = 'none';
-  shelf.appendChild(fragment);
-}
-
-function positionTooltip(e: MouseEvent, tooltip: HTMLElement) {
-  const x = e.clientX + 14;
-  const y = e.clientY - 36;
-  tooltip.style.left = x + 'px';
-  tooltip.style.top  = y + 'px';
-}
-
-function openDetail(book: any, coverUrl: string | null) {
-  const panel = document.getElementById('book-detail');
-  const shelf = document.getElementById('bookshelf');
-  const filters = document.getElementById('book-filters');
-  if (!panel || !shelf || !filters) return;
-
-  const dg = document.getElementById('detail-genre');
-  const dt = document.getElementById('detail-title');
-  const da = document.getElementById('detail-author');
-  const dy = document.getElementById('detail-year');
-  const dn = document.getElementById('detail-note');
-  const ds = document.getElementById('detail-status');
-
-  if (dg) dg.textContent = book.genre.toUpperCase();
-  if (dt) dt.textContent = book.title;
-  if (da) da.textContent = 'oleh ' + book.author;
-  if (dy) dy.textContent = `${book.year}`;
-  if (dn) dn.textContent = book.note || '';
-  if (ds) {
-    ds.textContent = statusLabel(book.status);
-    ds.className = 'detail-status font-mono ' + statusClass(book.status);
-  }
-
-  const img = document.getElementById('detail-cover') as HTMLImageElement;
-  const fallback = document.getElementById('detail-cover-fallback');
-  const initial = document.getElementById('detail-cover-initial');
-  if (img && fallback) {
-    if (coverUrl) {
-      img.src = coverUrl;
-      img.style.display = 'block';
-      fallback.style.display = 'none';
-    } else {
-      img.style.display = 'none';
-      fallback.style.display = 'flex';
-      fallback.style.background = book.color || '#333';
-      if (initial) initial.textContent = book.title.charAt(0);
+    if (!mobile) {
+      spine.addEventListener("mouseenter", e => showTooltip(e as MouseEvent, book.title, book.author));
+      spine.addEventListener("mousemove",  e => moveTooltip(e as MouseEvent));
+      spine.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
     }
-  }
+    spine.addEventListener("click", () => openDetail(book, coverUrl));
 
-  shelf.style.display = 'none';
-  filters.style.display = 'none';
-  panel.style.display = 'block';
-  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    shelf.appendChild(spine);
+    allSpines.push(spine);
+  });
 }
 
-function closeDetail() {
-  const panel = document.getElementById('book-detail');
-  const shelf = document.getElementById('bookshelf');
-  const filters = document.getElementById('book-filters');
-  if (panel && shelf && filters) {
-    panel.style.display = 'none';
-    shelf.style.display = 'flex';
-    filters.style.display = 'flex';
-  }
+function showTooltip(e: MouseEvent, title: string, author: string) {
+  const tooltip = document.getElementById("book-tooltip")!;
+  document.getElementById("tt-title")!.textContent  = title;
+  document.getElementById("tt-author")!.textContent = author;
+  tooltip.style.display = "block";
+  moveTooltip(e);
 }
 
-function setupEventListeners() {
-  document.getElementById('detail-close')?.addEventListener('click', closeDetail);
+function moveTooltip(e: MouseEvent) {
+  const tooltip = document.getElementById("book-tooltip")!;
+  const x = e.clientX + 14;
+  const y = e.clientY - 48;
+  tooltip.style.left = `${Math.min(x, window.innerWidth - 240)}px`;
+  tooltip.style.top  = `${y}px`;
+}
 
-  document.querySelectorAll('.bfilter').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.bfilter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = (btn as HTMLButtonElement).dataset.filter;
-      renderBooks(filter);
-      closeDetail();
+function openDetail(book: typeof BOOKS[0], coverUrl: string | null) {
+  const panel = document.getElementById("detail-panel")!;
+
+  document.getElementById("detail-genre")!.textContent  = book.genre.toUpperCase();
+  document.getElementById("detail-title")!.textContent  = book.title;
+  document.getElementById("detail-author")!.textContent = book.author;
+  document.getElementById("detail-year")!.textContent   = book.year;
+  document.getElementById("detail-note")!.textContent   = book.note;
+
+  const badge = document.getElementById("detail-status-badge")!;
+  badge.textContent  = statusLabel(book.status);
+  badge.className    = `detail-status font-mono ${statusClass(book.status)}`;
+
+  const img      = document.getElementById("detail-img") as HTMLImageElement;
+  const fallback = document.getElementById("detail-fallback")!;
+  const fallChar = document.getElementById("detail-fallback-char")!;
+
+  if (coverUrl) {
+    img.src = coverUrl;
+    img.style.display = "block";
+    fallback.style.display = "none";
+  } else {
+    img.style.display = "none";
+    fallback.style.display = "flex";
+    fallback.style.background = book.color;
+    fallChar.textContent = book.title[0];
+  }
+
+  panel.style.display = "block";
+  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+function init() {
+  if (isMobile()) {
+    renderMobileBoard();
+  } else {
+    drawStrings();
+    window.addEventListener("resize", () => {
+      drawStrings();
+    });
+    initDrag();
+    initPinHighlight();
+    initCursorGlow();
+  }
+  initCat();
+
+  // filter tabs
+  document.querySelectorAll(".ftab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".ftab").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderShelf((btn as HTMLElement).dataset.filter || "semua");
     });
   });
-}
 
-function init() {
-  fetchSpotify();
-  renderBooks().then(() => {
-    // Tunggu render selesai lalu init benang
-    setTimeout(initDetectiveStrings, 100);
+  // close detail
+  document.getElementById("detail-back")?.addEventListener("click", () => {
+    document.getElementById("detail-panel")!.style.display = "none";
   });
-  setupEventListeners();
 
-  // Re-init benang pas resize
-  window.addEventListener('resize', initDetectiveStrings);
+  renderShelf();
 }
 
-document.addEventListener('astro:page-load', init);
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("astro:page-load", init);
+document.addEventListener("DOMContentLoaded", init);
 </script>
 
 <style>
-  /* ===== DESIGN TOKENS ===== */
-  .page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-  }
-  .page-header { margin-bottom: 4rem; }
-  .page-eyebrow {
-    font-size: 0.8rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-  }
-  .page-title {
-    font-family: var(--font-heading), serif;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    color: var(--text-primary);
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-  }
-  .page-desc {
-    color: var(--text-secondary);
-    max-width: 580px;
-    font-size: 1.05rem;
-    line-height: 1.65;
-  }
+/* ── PAGE ─────────────────────────────────────────────────────*/
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+.page-header { margin-bottom: 4rem; }
+.eyebrow {
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.page-title {
+  font-family: var(--font-heading), serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-primary); font-weight: 400;
+  margin-bottom: 0.75rem; line-height: 1.15;
+}
+.page-desc { font-size: 1rem; color: var(--text-secondary); max-width: 520px; }
 
-  /* Bento Layout */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.75rem;
-  }
-  .card-sm { grid-column: span 4; }
-  .card-lg { grid-column: span 8; }
-  .card-xl { grid-column: span 12; }
+.section { margin-bottom: 5rem; }
+.section-head {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem; flex-wrap: wrap; gap: 0.5rem;
+}
+.section-eyebrow {
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.section-sub { font-size: 0.9rem; color: var(--text-secondary); }
 
-  .section-label {
-    font-size: 0.65rem;
-    color: var(--accent);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
-    opacity: 0.8;
-  }
+/* ── DETECTIVE BOARD ─────────────────────────────────────────*/
+.board-wrap {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background-color: #09080600;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #0C0B08;
+}
+.board-grain {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5; pointer-events: none;
+}
+.strings-svg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 1; pointer-events: none;
+}
 
-  /* ===== SPOTIFY CARD ===== */
-  .spotify-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 320px;
-  }
-  .vinyl-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 1.5rem 0;
-  }
-  .vinyl {
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #1a1813 24%, #0f0e0a 24%, #0f0e0a 40%, #1a1813 40%, #1a1813 55%, #0f0e0a 55%);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.05);
-    flex-shrink: 0;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-  }
-  .vinyl-art {
-    position: absolute; top:0; left:0;
-    width:100%; height:100%;
-    object-fit: cover;
-    border-radius: 50%;
-    opacity: 0.55;
-  }
-  .vinyl-center {
-    width:24px; height:24px;
-    border-radius: 50%;
-    background: #0d0c08;
-    border: 2px solid var(--border);
-    z-index: 2;
-  }
-  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .vinyl.spinning { animation: spin 5s linear infinite; }
+/* PIN ITEMS */
+.pin-item {
+  position: absolute; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.pin-head {
+  width: 10px; height: 10px; border-radius: 50%;
+  margin-bottom: 5px; flex-shrink: 0;
+}
+.pin-red   { background: #8B3A4A; box-shadow: 0 0 7px rgba(139,58,74,0.7); }
+.pin-teal  { background: #3A7A8B; box-shadow: 0 0 7px rgba(58,122,139,0.7); }
+.pin-green { background: #4A8A5A; box-shadow: 0 0 7px rgba(74,138,90,0.7); }
 
-  .track-info { margin-top: auto; }
-  .track-name {
-    font-family: var(--font-heading), serif;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    margin-bottom: 0.35rem;
-    line-height: 1.25;
-    font-weight: 400;
-  }
-  .track-artist {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-  }
-  .track-status {
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.4);
-    display: flex; align-items: center;
-    gap: 0.5rem;
-    letter-spacing: 0.1em;
-  }
-  .dot-live {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-  }
-  .dot-live.live {
-    background: #1DB954;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+/* NOTES */
+.note {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 1px;
+  max-width: 185px;
+  box-shadow: 2px 4px 14px rgba(0,0,0,0.55);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor: default;
+}
+.note:hover {
+  transform: translateY(-3px) rotate(0deg) !important;
+  box-shadow: 4px 8px 22px rgba(0,0,0,0.7);
+  z-index: 10;
+}
+.note-dark { background: #131108; }
+.note-warm { background: #141209; }
+.note-sm   { max-width: 155px; }
 
-  .spotify-footer {
-    margin-top: 1.5rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid rgba(255,255,255,0.03);
-  }
-  .spotify-link {
-    font-size: 0.65rem;
-    color: var(--text-secondary);
-    display: inline-flex; align-items: center;
-    gap: 0.4rem;
-    text-decoration: none;
-    opacity: 0.6;
-    transition: all 0.2s;
-  }
-  .spotify-link:hover { opacity: 1; color: #1DB954; }
-  .error-text { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.6; text-align: center; }
-  .loading-text { font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 0.5rem; animation: pulse 2s infinite; }
+.note-tag {
+  display: inline-block;
+  font-size: 0.55rem; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.tag-red   { color: #A05060; }
+.tag-teal  { color: #407888; }
+.tag-green { color: #507A5A; }
 
-  /* ===== DETECTIVE BOARD ===== */
-  .detective-card { display: flex; flex-direction: column; gap: 0.5rem; }
-  .detective-sub { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5; }
+.note-title {
+  font-family: var(--font-heading), serif;
+  font-size: 0.82rem; color: var(--text-primary);
+  font-weight: 400; line-height: 1.3; margin-bottom: 0.3rem;
+}
+.note-body {
+  font-size: 0.66rem; color: var(--text-secondary);
+  line-height: 1.55;
+}
+.note-chips { display: flex; gap: 4px; margin-top: 0.45rem; flex-wrap: wrap; }
+.chip {
+  font-size: 0.52rem; padding: 1px 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px; color: rgba(255,255,255,0.4);
+}
 
-  .board {
-    position: relative;
-    width: 100%;
-    height: 470px;
-    background-color: #090806;
-    background-image:
-      radial-gradient(rgba(255,255,255,0.012) 1px, transparent 0),
-      linear-gradient(to right, rgba(255,255,255,0.018) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size: 18px 18px, 36px 36px, 36px 36px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: inset 0 0 40px rgba(0,0,0,0.85);
-  }
+/* POLAROID */
+.polaroid {
+  position: absolute; z-index: 3;
+  background: #191710;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 7px 7px 22px;
+  box-shadow: 3px 5px 16px rgba(0,0,0,0.6);
+  transition: transform 0.2s ease;
+}
+.polaroid:hover { transform: scale(1.06) rotate(0deg) !important; }
+.polaroid-face {
+  width: 64px; height: 64px;
+  background: rgba(255,255,255,0.03);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.polaroid-label {
+  font-size: 0.5rem; color: rgba(255,255,255,0.3);
+  text-align: center; margin-top: 5px; letter-spacing: 0.08em;
+}
 
-  /* SVG string layer */
-  .string-layer {
-    position: absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: visible;
-  }
-  .str-line {
-    fill: none;
-    stroke-linecap: round;
-  }
-  .red-str {
-    stroke: #9B2335;
-    stroke-width: 1.5;
-    stroke-dasharray: none;
-    opacity: 0.75;
-    filter: drop-shadow(0 0 3px rgba(155, 35, 53, 0.5));
-  }
-  .red-str-dash {
-    stroke: #9B2335;
-    stroke-width: 1.2;
-    stroke-dasharray: 4 5;
-    opacity: 0.45;
-  }
-  .teal-str {
-    stroke: #2E7A8C;
-    stroke-width: 1.2;
-    stroke-dasharray: 3 4;
-    opacity: 0.6;
-  }
-  .green-str {
-    stroke: #3B8C46;
-    stroke-width: 1.2;
-    stroke-dasharray: 3 5;
-    opacity: 0.5;
-  }
-  .faint-str {
-    stroke: rgba(255,255,255,0.15);
-    stroke-width: 0.8;
-    stroke-dasharray: 2 6;
-    opacity: 0.3;
-  }
+/* STICKY */
+.sticky {
+  position: absolute; z-index: 3;
+  background: #1A1806; border: 1px solid #242208;
+  padding: 8px 10px; max-width: 110px;
+  box-shadow: 2px 3px 10px rgba(0,0,0,0.5);
+}
+.sticky-teal { background: #061518; border-color: #0C2428; }
+.sticky-red  { background: #160708; border-color: #240C10; }
+.sticky-text { font-size: 0.62rem; color: rgba(255,255,255,0.35); line-height: 1.55; }
 
-  /* Pins */
-  .pin {
-    position: absolute;
-    z-index: 3;
-    cursor: default;
-    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s;
-  }
-  .pin:hover { z-index: 10; transform: scale(1.04) translateY(-2px) !important; }
-  .pin-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    margin: 0 auto 5px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.08);
-    position: relative; z-index: 4;
-  }
-  .pin-red  { background: #C0392B; box-shadow: 0 2px 8px rgba(192, 57, 43, 0.7), 0 0 0 1px rgba(255,255,255,0.08); }
-  .pin-teal { background: #2482A6; box-shadow: 0 2px 8px rgba(36, 130, 166, 0.6), 0 0 0 1px rgba(255,255,255,0.08); }
-  .pin-green { background: #3FA624; box-shadow: 0 2px 8px rgba(63, 166, 36, 0.6), 0 0 0 1px rgba(255,255,255,0.08); }
+/* ── BOOKSHELF ───────────────────────────────────────────────*/
+.book-count-label {
+  font-size: 0.68rem; color: rgba(255,255,255,0.25);
+  letter-spacing: 0.06em; white-space: nowrap;
+  align-self: flex-end;
+}
+.filter-bar {
+  display: flex; gap: 0.4rem; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.ftab {
+  font-size: 0.68rem; padding: 0.3rem 1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent; color: rgba(255,255,255,0.3);
+  border-radius: 999px; cursor: pointer;
+  letter-spacing: 0.06em;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.ftab:hover { border-color: var(--accent); color: rgba(255,255,255,0.7); }
+.ftab.active {
+  border-color: var(--accent);
+  color: var(--text-primary);
+  background: rgba(107,45,62,0.12);
+}
 
-  /* Notes */
-  .note {
-    background: #131109;
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 0.65rem 0.75rem;
-    max-width: 170px;
-    box-shadow: 4px 6px 18px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.03);
-    border-radius: 1px;
-    transition: box-shadow 0.2s;
-  }
-  .note-hover:hover {
-    box-shadow: 6px 8px 24px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.05);
-  }
-  .note-yellow { background: #141208; border-color: rgba(217,192,108,0.07); }
-  .note-photo  { background: #0b0d0f; border-color: rgba(255,255,255,0.04); }
-  .note-torn {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 94%, 93% 100%, 85% 95%, 72% 98%, 55% 93%, 38% 97%, 25% 93%, 0% 96%);
-  }
-  .note-small { max-width: 145px; }
-  .note-label {
-    font-size: 0.52rem;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    margin-bottom: 0.2rem;
-    text-transform: uppercase;
-  }
-  .note-title {
-    font-family: var(--font-heading), serif;
-    font-size: 0.82rem;
-    color: var(--text-primary);
-    margin-bottom: 0.28rem;
-    line-height: 1.3;
-  }
-  .note-body {
-    font-size: 0.63rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-  }
-  .note-tags {
-    display: flex; gap: 0.3rem; flex-wrap: wrap;
-    margin-top: 0.45rem;
-  }
-  .ntag {
-    font-size: 0.5rem; letter-spacing: 0.06em;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.45);
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-family: var(--font-mono, monospace);
-  }
-  .ntag-red   { border-color: rgba(192, 57, 43, 0.3); color: rgba(192, 57, 43, 0.8); }
-  .ntag-green { border-color: rgba(63, 166, 36, 0.3); color: rgba(63, 166, 36, 0.7); }
+.shelf-container {
+  position: relative;
+  padding-bottom: 1rem;
+}
+.shelf-floor {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
+  border-radius: 2px;
+}
+.shelf-books {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 3px;
+  min-height: 175px;
+  padding-bottom: 1rem;
+}
+.shelf-loading {
+  font-size: 0.72rem; color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em; padding: 2rem 0;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.6} 50%{opacity:0.2} }
 
-  /* Polaroid */
-  .polaroid {
-    position: absolute;
-    background: #13110d;
-    border: 1px solid rgba(255,255,255,0.04);
-    padding: 5px 5px 16px 5px;
-    box-shadow: 5px 7px 20px rgba(0,0,0,0.7);
-    z-index: 2;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: default;
-  }
-  .polaroid:hover {
-    transform: scale(1.07) rotate(0deg) !important;
-    z-index: 10;
-    box-shadow: 8px 10px 30px rgba(0,0,0,0.9);
-  }
-  .polaroid-img {
-    width: 60px; height: 52px;
-    background: #090806;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    border-radius: 1px;
-  }
-  .polaroid-caption {
-    font-size: 0.48rem; text-align: center;
-    margin-top: 5px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.04em;
-  }
+/* SPINE */
+.spine {
+  width: 38px;
+  height: var(--sh, 145px);
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.18s cubic-bezier(0.2,0.8,0.2,1);
+  border-radius: 1px 2px 2px 1px;
+  overflow: hidden;
+}
+.spine:hover {
+  transform: translateY(-14px) scale(1.06);
+  z-index: 5;
+}
+.spine-inner {
+  width: 100%; height: 100%;
+  border-left: 3px solid var(--sc, #333);
+  position: relative;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.4);
+}
+.spine-img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.spine-fallback {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--sc, #333);
+}
+.spine-char {
+  font-family: var(--font-heading), serif;
+  font-size: 1.2rem; font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  writing-mode: vertical-lr;
+}
+.reading-dot {
+  position: absolute; top: 6px; right: 5px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #1DB954;
+  box-shadow: 0 0 5px #1DB954;
+  animation: pulse 2s infinite;
+  z-index: 2;
+}
 
-  /* Sticky notes */
-  .sticky {
-    position: absolute;
-    padding: 5px 9px;
-    z-index: 2;
-    border-radius: 1px;
-  }
-  .sticky-teal  { background: #0b1214; border: 1px solid rgba(36, 130, 166, 0.15); }
-  .sticky-red   { background: #130c0c; border: 1px solid rgba(192, 57, 43, 0.15); }
-  .sticky-text  { font-size: 0.62rem; color: rgba(255,255,255,0.5); }
+/* TOOLTIP */
+.book-tooltip {
+  position: fixed;
+  background: #0F0E0A;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 0.5rem 0.85rem;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 4px 6px 20px rgba(0,0,0,0.8);
+  max-width: 230px;
+  animation: fadeUp 0.12s ease;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(5px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.tt-title  { font-size: 0.74rem; color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.3; }
+.tt-author { font-size: 0.62rem; color: rgba(255,255,255,0.35); }
 
-  /* ===== BOOKSHELF — RAK VISUAL ===== */
-  .library-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-    padding-bottom: 1rem;
-  }
-  .library-sub { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
-  .library-meta { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.55; white-space: nowrap; }
+/* DETAIL PANEL */
+.detail-panel {
+  margin-top: 2rem;
+  padding: 2rem 2.5rem;
+  background: #0C0B08;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3px;
+  animation: slideUp 0.28s cubic-bezier(0.1,0.8,0.3,1);
+}
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.detail-top {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.detail-back {
+  background: transparent; border: none;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer; font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s; padding: 0;
+}
+.detail-back:hover { color: var(--text-primary); }
 
-  .book-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
-  .bfilter {
-    font-size: 0.7rem;
-    padding: 0.35rem 0.9rem;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-secondary);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    letter-spacing: 0.04em;
-  }
-  .bfilter:hover, .bfilter.active {
-    border-color: var(--accent);
-    color: var(--text-primary);
-    background: rgba(166, 36, 36, 0.06);
-  }
+.detail-status {
+  font-size: 0.6rem; padding: 0.2rem 0.85rem;
+  border-radius: 2px; border: 1px solid;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.bs-done    { color: rgba(74,180,74,0.8);  border-color: rgba(74,180,74,0.3); }
+.bs-reading { color: #1DB954;              border-color: rgba(29,185,84,0.4); }
+.bs-wish    { color: rgba(255,255,255,0.3);border-color: rgba(255,255,255,0.1); }
 
-  /* Rak buku — spine style, tanpa nama */
-  .shelf-visual {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0;
-    align-items: flex-end;
-    padding: 1.25rem 1rem 0;
-    background: 
-      linear-gradient(to bottom, transparent 85%, rgba(255,255,255,0.025) 85%, rgba(255,255,255,0.025) 88%, transparent 88%);
-    min-height: 180px;
-    border-radius: 2px;
-    position: relative;
-  }
+.detail-body { display: flex; gap: 3rem; align-items: flex-start; }
+.detail-cover-col { flex-shrink: 0; }
+.detail-book-shadow {
+  box-shadow: 8px 14px 32px rgba(0,0,0,0.8);
+  border-radius: 1px 3px 3px 1px;
+  overflow: hidden; width: 140px;
+}
+.detail-img {
+  width: 140px; aspect-ratio: 2/3;
+  object-fit: cover; display: block;
+}
+.detail-img-fallback {
+  width: 140px; aspect-ratio: 2/3;
+  display: none; align-items: center; justify-content: center;
+  font-family: var(--font-heading), serif;
+  font-size: 3rem; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+}
+.detail-text-col { flex: 1; min-width: 0; }
+.detail-genre {
+  font-size: 0.62rem; color: var(--accent);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.detail-title {
+  font-family: var(--font-heading), serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--text-primary); font-weight: 400;
+  line-height: 1.2; margin-bottom: 0.4rem;
+}
+.detail-author {
+  font-size: 0.82rem; color: var(--text-secondary);
+  margin-bottom: 0.15rem;
+}
+.detail-year {
+  font-size: 0.68rem; color: rgba(255,255,255,0.22);
+  margin-bottom: 1.5rem; letter-spacing: 0.06em;
+}
+.detail-rule {
+  height: 1px; background: rgba(255,255,255,0.05);
+  margin-bottom: 1.5rem;
+}
+.detail-note {
+  font-size: 0.95rem; color: var(--text-secondary);
+  line-height: 1.75; font-style: italic;
+  max-width: 580px; margin: 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid rgba(107,45,62,0.4);
+  position: relative;
+}
 
-  /* shadow di bawah rak */
-  .shelf-visual::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: rgba(0,0,0,0.35);
-    border-radius: 0 0 2px 2px;
-  }
+/* ── CURSOR GLOW ─────────────────────────────────────────────*/
+.board-container {
+  position: relative;
+}
+.board-glow {
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,45,62,0.18) 0%, rgba(58,122,139,0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  top: 0; left: 0;
+  transition: opacity 0.4s ease;
+  will-change: transform;
+  mix-blend-mode: screen;
+}
 
-  .book-spine {
-    width: 40px;
-    height: 150px;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s;
-    flex-shrink: 0;
-    border-radius: 1px 2px 2px 1px;
-    overflow: hidden;
-    margin-right: 3px;
-    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-  }
-  .book-spine:hover {
-    transform: translateY(-12px) scale(1.05);
-    z-index: 5;
-    box-shadow: 4px 8px 20px rgba(0,0,0,0.8);
-  }
-  .spine-inner {
-    width: 100%; height: 100%;
-    position: relative;
-    border-left: 3px solid var(--spine-color, #333);
-  }
-  .spine-cover {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 0 1px 1px 0;
-  }
-  .spine-fallback {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--spine-color, #333);
-  }
-  .spine-initial {
-    font-family: var(--font-heading), serif;
-    font-size: 1.25rem;
-    color: rgba(255,255,255,0.6);
-    font-weight: 300;
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-  }
+/* ── PIN TRANSITIONS ─────────────────────────────────────────*/
+.pin-item {
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
 
-  /* Dot untuk buku sedang dibaca */
-  .spine-reading-dot {
-    position: absolute;
-    top: 6px; right: 5px;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #1DB954;
-    box-shadow: 0 0 4px #1DB954;
-    animation: pulse 2s infinite;
-    z-index: 2;
-  }
+/* ── CAT (mengintip dari kiri) ───────────────────────────────*/
+.board-cat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 2.5rem;
+  bottom: calc(100% - 4px);
+  z-index: 10;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.1s ease;
+}
+.cat-label {
+  font-size: 0.48rem;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.board-cat:hover .cat-label,
+.board-cat:focus-visible .cat-label { opacity: 1; }
 
-  /* Tooltip hover buku */
-  .book-tooltip {
-    position: fixed;
-    background: #111009;
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 0.5rem 0.75rem;
-    border-radius: 3px;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 4px 6px 16px rgba(0,0,0,0.8);
-    max-width: 220px;
-    animation: fadeIn 0.12s ease;
-  }
-  @keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform: translateY(0); } }
-  .tooltip-title { font-size: 0.72rem; color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.3; }
-  .tooltip-author { font-size: 0.62rem; color: var(--text-secondary); opacity: 0.7; }
+.cat-body { position: relative; width: 60px; }
 
-  .shelf-loading { font-size: 0.75rem; color: rgba(255,255,255,0.25); padding: 1rem; animation: pulse 2s infinite; }
+/* helai bulu di antara telinga */
+.cat-fur-wisps {
+  position: absolute;
+  top: -22px; left: 50%;
+  transform: translateX(-50%);
+  width: 28px; height: 14px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.cat-fur-wisps span {
+  display: block; width: 1.5px; height: 100%;
+  background: #0d0d0d; border-radius: 1px;
+}
+.cat-fur-wisps span:nth-child(1) { transform: rotate(-22deg); height: 60%; }
+.cat-fur-wisps span:nth-child(2) { transform: rotate(-10deg); height: 85%; }
+.cat-fur-wisps span:nth-child(4) { transform: rotate(10deg);  height: 85%; }
+.cat-fur-wisps span:nth-child(5) { transform: rotate(22deg);  height: 60%; }
 
-  /* ===== BOOK DETAIL PANEL ===== */
-  .book-detail {
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.01);
-    padding: 2rem;
-    border-radius: var(--radius);
-    animation: slideUp 0.3s cubic-bezier(0.1, 0.8, 0.3, 1);
-    margin-top: 1rem;
-  }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.cat-ears {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  display: flex; justify-content: space-between;
+}
+.cat-ear {
+  width: 0; height: 0;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 22px solid #0d0d0d;
+}
+.cat-ear-l { transform: rotate(-10deg); }
+.cat-ear-r { transform: rotate(10deg); }
 
-  .detail-close {
-    background: transparent; border: none;
-    color: var(--text-secondary);
-    cursor: pointer; font-size: 0.7rem;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-    transition: color 0.2s;
-    padding: 0;
-  }
-  .detail-close:hover { color: var(--text-primary); }
-  .detail-inner { display: flex; gap: 2.5rem; }
+.cat-head {
+  width: 60px; height: 44px;
+  background: #0d0d0d;
+  border-radius: 50% 50% 46% 46%;
+  margin: 0 auto;
+  position: relative;
+  animation: cat-sway 5s ease-in-out infinite;
+}
+@keyframes cat-sway {
+  0%,100% { transform: rotate(-1deg); }
+  50%      { transform: rotate(1deg); }
+}
+.cat-eyes {
+  position: absolute;
+  top: 16px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 11px;
+}
+.cat-eye {
+  width: 17px; height: 17px;
+  background: #E3A93C;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(227,169,60,0.5);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.1s ease;
+}
+.cat-eye.cat-blink { transform: scaleY(0.08); }
+.cat-pupil {
+  width: 9px; height: 9px;
+  background: #0a0a0a;
+  border-radius: 50%;
+  position: relative;
+}
+.cat-pupil::after {
+  content: '';
+  position: absolute; top: 1px; left: 1px;
+  width: 2.5px; height: 2.5px;
+  background: #fff; border-radius: 50%;
+}
+.cat-chin {
+  position: absolute;
+  bottom: -5px; left: 50%;
+  transform: translateX(-50%);
+  width: 34px; height: 14px;
+  background: #0d0d0d;
+  border-radius: 0 0 50% 50% / 0 0 90% 90%;
+}
 
-  .detail-cover-container {
-    flex-shrink: 0;
-    box-shadow: 8px 12px 28px rgba(0,0,0,0.7);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 2px;
-    overflow: hidden;
-    width: 140px;
-  }
-  .detail-cover { width: 140px; aspect-ratio: 2/3; object-fit: cover; display: block; }
-  .detail-cover-fallback {
-    width: 140px;
-    aspect-ratio: 2/3;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-heading), serif;
-    font-size: 3rem;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-  }
+/* gelembung ucapan kucing */
+.cat-bubble {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-22%) translateY(6px) scale(0.94);
+  min-width: 150px; max-width: 200px;
+  background: #141209;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.7rem; line-height: 1.55;
+  color: rgba(255,255,255,0.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 20;
+}
+.cat-bubble.show { opacity: 1; transform: translateX(-22%) translateY(0) scale(1); }
+.cat-bubble::after {
+  content: '';
+  position: absolute; bottom: -6px; left: 24%;
+  width: 10px; height: 10px;
+  background: #141209;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transform: rotate(45deg);
+}
 
-  .detail-info { display: flex; flex-direction: column; width: 100%; }
-  .detail-genre { font-size: 0.62rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
-  .detail-title { font-family: var(--font-heading), serif; font-size: 1.75rem; color: var(--text-primary); font-weight: 400; margin-bottom: 0.4rem; line-height: 1.2; }
-  .detail-author { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
-  .detail-year { font-size: 0.72rem; color: rgba(255,255,255,0.28); margin-bottom: 1.25rem; }
-  .detail-divider { height: 1px; background: rgba(255,255,255,0.05); margin-bottom: 1.25rem; }
-  .detail-note {
-    font-size: 0.95rem; color: var(--text-secondary);
-    line-height: 1.7; max-width: 650px;
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    position: relative;
-    padding-left: 1.2rem;
-  }
-  .detail-note::before {
-    content: '"';
-    position: absolute; left: 0; top: -0.15rem;
-    font-size: 1.5rem;
-    color: var(--accent);
-    opacity: 0.5;
-    font-family: var(--font-heading), serif;
-    line-height: 1;
-  }
-  .detail-status {
-    align-self: flex-start;
-    font-size: 0.62rem;
-    padding: 0.25rem 0.85rem;
-    border-radius: 2px;
-    border: 1px solid rgba(255,255,255,0.1);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .bs-done    { border-color: rgba(63,166,36,0.3); color: rgba(63,166,36,0.8); }
-  .bs-reading { border-color: rgba(29,185,84,0.4); color: #1DB954; }
-  .bs-wish    { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); }
+.board-cat:active {
+  cursor: grabbing;
+}
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) {
-    .card-sm, .card-lg { grid-column: span 12; }
-    .board { height: 500px; }
-  }
-  @media (max-width: 768px) {
-    .page-container { padding: 3rem 1.25rem; }
-    .detail-inner { flex-direction: column; gap: 1.5rem; }
-    .detail-cover { width: 110px; }
-    .detail-cover-container { width: 110px; }
-    .string-layer line { stroke-width: 1; }
-    .book-spine { width: 32px; height: 120px; }
-  }
+/* Animasi Mendengkur (Getar) */
+@keyframes catPurr {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+.cat-purring {
+  animation: catPurr 0.08s infinite;
+}
+
+/* Ekspresi mata tersenyum (bahagia saat di-tap) */
+.cat-happy .cat-eye {
+  background: transparent !important;
+  border-radius: 0;
+  height: 10px;
+  border-top: 4px solid #f2b84b; /* Kelopak mata melengkung senyum */
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+.cat-happy .cat-pupil {
+  display: none; /* Sembunyikan pupil bulat default */
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────*/
+@media (max-width: 768px) {
+  .board-wrap { height: 400px; }
+  .note { max-width: 145px; font-size: 0.92em; }
+  .detail-body { flex-direction: column; gap: 1.5rem; }
+  .detail-book-shadow, .detail-img { width: 110px; }
+  .detail-img-fallback { width: 110px; }
+  .spine { width: 30px; }
+}
 </style>
