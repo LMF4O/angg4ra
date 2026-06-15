@@ -1,0 +1,1240 @@
+---
+import BaseLayout from '../../components/layout/BaseLayout.astro';
+import BentoCard from '../../components/ui/BentoCard.astro';
+---
+
+<BaseLayout title="Misc" lang="id">
+  <div class="page-container">
+
+    <div class="page-header">
+      <p class="page-eyebrow font-mono">/ misc</p>
+      <h1 class="page-title">Di Luar Kode</h1>
+      <p class="page-desc">
+        Hal-hal yang membentuk cara saya berpikir — musik, bacaan, dan benang merah dari apa yang sedang saya selidiki secara mendalam.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+
+      <!-- SPOTIFY CARD -->
+      <div class="card-sm">
+        <BentoCard size="sm" scanline={true}>
+          <div class="spotify-card" id="spotify-widget">
+            <p class="section-label font-mono">/ sedang diputar</p>
+
+            <div class="spotify-loading" id="spotify-loading">
+              <div class="vinyl-wrapper">
+                <div class="vinyl spinning">
+                  <div class="vinyl-center"></div>
+                </div>
+              </div>
+              <p class="loading-text font-mono">memuat sinyal...</p>
+            </div>
+
+            <div class="spotify-content" id="spotify-content" style="display:none">
+              <div class="vinyl-wrapper">
+                <div class="vinyl" id="vinyl-disc-playing">
+                  <img id="track-art" src="" alt="" class="vinyl-art" />
+                  <div class="vinyl-center"></div>
+                </div>
+              </div>
+              <div class="track-info">
+                <p class="track-name" id="track-name">—</p>
+                <p class="track-artist font-mono" id="track-artist">—</p>
+                <div class="track-status font-mono" id="track-status">
+                  <span class="dot-live" id="dot-live"></span>
+                  <span id="status-text">—</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="spotify-error" id="spotify-error" style="display:none">
+              <div class="vinyl-wrapper">
+                <div class="vinyl">
+                  <div class="vinyl-center"></div>
+                </div>
+              </div>
+              <p class="error-text font-mono">terminal offline.<br/>playlist disembunyikan.</p>
+            </div>
+
+            <div class="spotify-footer">
+              <a href="https://open.spotify.com/user/gii" target="_blank" rel="noopener" class="spotify-link font-mono">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Buka di Spotify
+              </a>
+            </div>
+          </div>
+        </BentoCard>
+      </div>
+
+      <!-- DETECTIVE BOARD -->
+      <div class="card-lg">
+        <BentoCard size="lg">
+          <div class="detective-card">
+            <p class="section-label font-mono">/ papan investigasi</p>
+            <p class="detective-sub">Benang merah dari anomali data dan teori yang sedang saya bedah.</p>
+
+            <div class="board" id="detective-board">
+              <!-- SVG benang merah animasi -->
+              <svg class="string-layer" id="string-svg">
+                <!-- Benang MERAH: ISPU → Proposal → Website -->
+                <line class="str-line red-str" data-x1="12" data-y1="13" data-x2="30" data-y2="27" />
+                <line class="str-line red-str" data-x1="30" data-y1="27" data-x2="56" data-y2="11" />
+                <line class="str-line red-str-dash" data-x1="56" data-y1="11" data-x2="78" data-y2="30" />
+                <!-- Benang TEAL: Proposal → MLOps -->
+                <line class="str-line teal-str" data-x1="30" data-y1="27" data-x2="10" data-y2="62" />
+                <!-- Benang HIJAU: Website → Lua -->
+                <line class="str-line green-str" data-x1="56" data-y1="11" data-x2="30" data-y2="62" />
+                <!-- Benang putus-putus: IDENTITAS → ISPU -->
+                <line class="str-line faint-str" data-x1="78" data-y1="30" data-x2="56" data-y2="11" />
+              </svg>
+
+              <div class="pin" style="top:8%; left:5%;">
+                <div class="pin-dot pin-red"></div>
+                <div class="note note-torn note-hover">
+                  <p class="note-label font-mono">KASUS AKTIF</p>
+                  <p class="note-title">Prediksi ISPU Jakarta</p>
+                  <p class="note-body">5 algoritma, SHAP explainability, Random Forest 94.2% akurasi</p>
+                  <div class="note-tags"><span class="ntag ntag-red">ML</span><span class="ntag">Python</span></div>
+                </div>
+              </div>
+
+              <div class="pin" style="top:20%; left:22%;">
+                <div class="pin-dot pin-teal"></div>
+                <div class="note note-yellow note-hover">
+                  <p class="note-label font-mono">ONGOING</p>
+                  <p class="note-title">Proposal Skripsi</p>
+                  <p class="note-body">CRM + Predictive Analytics untuk metrik performa siswa real-time.</p>
+                </div>
+              </div>
+
+              <div class="pin" style="top:5%; left:50%;">
+                <div class="pin-dot pin-green"></div>
+                <div class="note note-torn note-hover">
+                  <p class="note-label font-mono">WORKSPACE</p>
+                  <p class="note-title">angg4ra.pages.dev</p>
+                  <p class="note-body">Arsitektur web ini. Astro + TypeScript + bento grid.</p>
+                  <div class="note-tags"><span class="ntag ntag-green">Astro</span><span class="ntag">TS</span></div>
+                </div>
+              </div>
+
+              <div class="pin" style="top:22%; left:70%;">
+                <div class="pin-dot pin-red"></div>
+                <div class="note note-photo note-hover">
+                  <p class="note-label font-mono">IDENTITAS</p>
+                  <p class="note-title">INTP · Educator · Data Nerd</p>
+                  <p class="note-body">Mentransfer logika pemrograman di fajar, membedah model di malam hari.</p>
+                </div>
+              </div>
+
+              <div class="pin" style="top:56%; left:3%;">
+                <div class="pin-dot pin-teal"></div>
+                <div class="note note-small note-hover">
+                  <p class="note-label font-mono">RISET</p>
+                  <p class="note-title">MLOps Dasar</p>
+                  <p class="note-body">Pipeline feature engineering dan automated model deployment.</p>
+                </div>
+              </div>
+
+              <div class="pin" style="top:55%; left:22%;">
+                <div class="pin-dot pin-green"></div>
+                <div class="note note-small note-yellow note-hover">
+                  <p class="note-label font-mono">LOG</p>
+                  <p class="note-title">Lua & Roblox Dev</p>
+                  <p class="note-body">Virtual environment design berbasis objek sejak SMA.</p>
+                </div>
+              </div>
+
+              <div class="polaroid" style="top:18%; left:44%; transform:rotate(3deg)">
+                <div class="polaroid-img">📊</div>
+                <p class="polaroid-caption font-mono">METRIK_ISPU</p>
+              </div>
+
+              <div class="polaroid" style="top:50%; left:52%; transform:rotate(-4deg)">
+                <div class="polaroid-img">🎸</div>
+                <p class="polaroid-caption font-mono">HP_VICTUS_26</p>
+              </div>
+
+              <!-- Sticky note lokasi -->
+              <div class="sticky sticky-teal" style="bottom:5%; right:4%; transform:rotate(1deg)">
+                <p class="font-mono sticky-text">Bekasi, ID 📍</p>
+              </div>
+
+              <!-- Sticky note tambahan -->
+              <div class="sticky sticky-red" style="bottom:5%; left:42%; transform:rotate(-2deg)">
+                <p class="font-mono sticky-text">67 = jawaban?</p>
+              </div>
+            </div>
+          </div>
+        </BentoCard>
+      </div>
+
+      <!-- BOOKSHELF -->
+      <div class="card-xl">
+        <BentoCard size="xl">
+          <div class="library-card">
+            <div class="library-header">
+              <div>
+                <p class="section-label font-mono">/ arsip perpustakaan</p>
+                <p class="library-sub">Katalog literatur yang memengaruhi pola pikir ilmiah dan naratif saya.</p>
+              </div>
+              <div class="library-meta font-mono">
+                <span id="book-count">—</span> judul terdaftar
+              </div>
+            </div>
+
+            <div class="book-filters" id="book-filters">
+              <button class="bfilter active font-mono" data-filter="semua">Semua</button>
+              <button class="bfilter font-mono" data-filter="fiksi">Fiksi</button>
+              <button class="bfilter font-mono" data-filter="nonfiksi">Non-fiksi</button>
+              <button class="bfilter font-mono" data-filter="teknis">Teknis</button>
+              <button class="bfilter font-mono" data-filter="sedang-dibaca">Sedang Dipelajari</button>
+            </div>
+
+            <!-- VISUAL BOOKSHELF RAK -->
+            <div class="shelf-visual" id="bookshelf">
+              <div class="shelf-loading font-mono" id="shelf-loading">membuka enkripsi arsip...</div>
+            </div>
+
+            <!-- TOOLTIP hover -->
+            <div class="book-tooltip" id="book-tooltip" style="display:none">
+              <p class="tooltip-title font-mono" id="tt-title">—</p>
+              <p class="tooltip-author font-mono" id="tt-author">—</p>
+            </div>
+
+            <!-- DETAIL PANEL -->
+            <div class="book-detail" id="book-detail" style="display:none">
+              <button class="detail-close font-mono" id="detail-close">← kembali ke rak</button>
+              <div class="detail-inner">
+                <div class="detail-cover-container">
+                  <img id="detail-cover" src="" alt="" class="detail-cover" />
+                  <div class="detail-cover-fallback" id="detail-cover-fallback" style="display:none">
+                    <span id="detail-cover-initial">?</span>
+                  </div>
+                </div>
+                <div class="detail-info">
+                  <p class="detail-genre font-mono" id="detail-genre">—</p>
+                  <h3 class="detail-title" id="detail-title">—</h3>
+                  <p class="detail-author font-mono" id="detail-author">—</p>
+                  <p class="detail-year font-mono" id="detail-year">—</p>
+                  <div class="detail-divider"></div>
+                  <p class="detail-note" id="detail-note">—</p>
+                  <span class="detail-status font-mono" id="detail-status">—</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </BentoCard>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+const BOOKS = [
+  {
+    title: "The Adventures of Sherlock Holmes",
+    author: "Arthur Conan Doyle",
+    year: "1892",
+    isbn: "9780140439076",
+    genre: "fiksi",
+    status: "sedang-dibaca",
+    note: "Cara Holmes mengamati detail kecil dan menarik kesimpulan dari noise — ini yang bikin saya tertarik ke data.",
+    color: "#8C4A2E"
+  },
+  {
+    title: "Thinking, Fast and Slow",
+    author: "Daniel Kahneman",
+    year: "2011",
+    isbn: "9780374533557",
+    genre: "nonfiksi",
+    status: "selesai",
+    note: "Buku yang mengubah cara saya melihat pengambilan keputusan. System 1 vs System 2 — relevan banget ke ML.",
+    color: "#2E4A8C"
+  },
+  {
+    title: "The Hitchhiker's Guide to the Galaxy",
+    author: "Douglas Adams",
+    year: "1979",
+    isbn: "9780345391803",
+    genre: "fiksi",
+    status: "selesai",
+    note: "42. Humor absurd tentang semesta yang dibangun dari logika yang konsisten — somehow relatable.",
+    color: "#4A8C2E"
+  },
+  {
+    title: "Hands-On Machine Learning",
+    author: "Aurélien Géron",
+    year: "2022",
+    isbn: "9781098125974",
+    genre: "teknis",
+    status: "sedang-dibaca",
+    note: "Referensi utama waktu ngerjain proyek ISPU Jakarta. Dense tapi solid.",
+    color: "#8C2E2E"
+  },
+  {
+    title: "The Signal and the Noise",
+    author: "Nate Silver",
+    year: "2012",
+    isbn: "9780143125082",
+    genre: "nonfiksi",
+    status: "selesai",
+    note: "Prediksi itu bukan soal kepastian — soal seberapa baik kita mengukur ketidakpastian.",
+    color: "#6B4A8C"
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    year: "1949",
+    isbn: "9780451524935",
+    genre: "fiksi",
+    status: "selesai",
+    note: "Data sebagai alat kontrol. Distopia ini semakin relevan tiap tahun.",
+    color: "#2E2E2E"
+  },
+  {
+    title: "Python Data Science Handbook",
+    author: "Jake VanderPlas",
+    year: "2016",
+    isbn: "9781491912058",
+    genre: "teknis",
+    status: "selesai",
+    note: "NumPy, Pandas, Matplotlib, Scikit-learn — buku ini yang ngajarin fondasi pipeline data saya.",
+    color: "#1A6B8C"
+  },
+  {
+    title: "Sapiens",
+    author: "Yuval Noah Harari",
+    year: "2011",
+    isbn: "9780062316097",
+    genre: "nonfiksi",
+    status: "selesai",
+    note: "Cara manusia membangun sistem kolektif dari cerita yang disepakati bersama. Basis dari segalanya.",
+    color: "#8C6B2E"
+  },
+  {
+    title: "The Name of the Wind",
+    author: "Patrick Rothfuss",
+    year: "2007",
+    isbn: "9780756404079",
+    genre: "fiksi",
+    status: "selesai",
+    note: "Storytelling yang terlalu bagus untuk dilewatkan. Kvothe adalah karakter yang terlalu INTP.",
+    color: "#5C2E8C"
+  },
+  {
+    title: "Deep Work",
+    author: "Cal Newport",
+    year: "2016",
+    isbn: "9781455586691",
+    genre: "nonfiksi",
+    status: "selesai",
+    note: "Fokus dalam yang dalam adalah superpower langka. Relevan banget di era notifikasi tiap 5 detik.",
+    color: "#2E5C8C"
+  },
+  {
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    year: "2008",
+    isbn: "9780132350884",
+    genre: "teknis",
+    status: "selesai",
+    note: "Kode yang baik bukan yang pintar — yang bisa dibaca orang lain enam bulan kemudian.",
+    color: "#3A5C3A"
+  },
+  {
+    title: "Flowers for Algernon",
+    author: "Daniel Keyes",
+    year: "1966",
+    isbn: "9780156030304",
+    genre: "fiksi",
+    status: "selesai",
+    note: "Novel paling emosional yang pernah saya baca. Kecerdasan tanpa kebijaksanaan adalah beban.",
+    color: "#8C3A5C"
+  },
+];
+
+// === SPOTIFY ===
+const SPOTIFY_CONFIG = {
+  CLIENT_ID: '0eaa7f17c9b044cabbb1dc54ad3b1af7',
+  CLIENT_SECRET: 'GANTI_DENGAN_CLIENT_SECRET',
+  REFRESH_TOKEN: 'GANTI_DENGAN_REFRESH_TOKEN',
+};
+
+async function fetchSpotify() {
+  const loading = document.getElementById('spotify-loading');
+  const content = document.getElementById('spotify-content');
+  const error   = document.getElementById('spotify-error');
+
+  const isDummy = SPOTIFY_CONFIG.REFRESH_TOKEN === 'GANTI_DENGAN_REFRESH_TOKEN'
+               || SPOTIFY_CONFIG.CLIENT_SECRET === 'GANTI_DENGAN_CLIENT_SECRET';
+
+  if (isDummy) {
+    showSpotifyContent({
+      name: 'Acoustic & Lo-Fi Session',
+      artist: 'Ambient Collector',
+      albumArt: null,
+      isPlaying: false,
+      statusText: 'terakhir diputar',
+    });
+    return;
+  }
+
+  try {
+    const tokenRes = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + btoa(SPOTIFY_CONFIG.CLIENT_ID + ':' + SPOTIFY_CONFIG.CLIENT_SECRET),
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: SPOTIFY_CONFIG.REFRESH_TOKEN,
+      }),
+    });
+    const { access_token } = await tokenRes.json();
+
+    const nowRes = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+      headers: { 'Authorization': `Bearer ${access_token}` },
+    });
+
+    if (nowRes.status === 200) {
+      const data = await nowRes.json();
+      if (data && data.item) {
+        showSpotifyContent({
+          name: data.item.name,
+          artist: data.item.artists.map((a: any) => a.name).join(', '),
+          albumArt: data.item.album.images[0]?.url || null,
+          isPlaying: data.is_playing,
+          statusText: data.is_playing ? 'sedang diputar' : 'dijeda',
+        });
+        return;
+      }
+    }
+
+    const recentRes = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
+      headers: { 'Authorization': `Bearer ${access_token}` },
+    });
+    const recentData = await recentRes.json();
+    const track = recentData.items?.[0]?.track;
+    if (track) {
+      showSpotifyContent({
+        name: track.name,
+        artist: track.artists.map((a: any) => a.name).join(', '),
+        albumArt: track.album.images[0]?.url || null,
+        isPlaying: false,
+        statusText: 'terakhir diputar',
+      });
+    } else {
+      showError();
+    }
+  } catch (e) {
+    showError();
+  }
+
+  function showSpotifyContent({ name, artist, albumArt, isPlaying, statusText }: any) {
+    if (!loading || !content) return;
+    loading.style.display = 'none';
+    content.style.display = 'block';
+
+    const tn = document.getElementById('track-name');
+    const ta = document.getElementById('track-artist');
+    const st = document.getElementById('status-text');
+    if (tn) tn.textContent = name;
+    if (ta) ta.textContent = artist;
+    if (st) st.textContent = statusText;
+
+    const dotLive = document.getElementById('dot-live');
+    if (dotLive) {
+      isPlaying ? dotLive.classList.add('live') : dotLive.classList.remove('live');
+    }
+
+    const vinyl = document.getElementById('vinyl-disc-playing');
+    if (vinyl) {
+      isPlaying ? vinyl.classList.add('spinning') : vinyl.classList.remove('spinning');
+    }
+
+    if (albumArt) {
+      const img = document.getElementById('track-art') as HTMLImageElement;
+      if (img) { img.src = albumArt; img.style.display = 'block'; }
+    }
+  }
+
+  function showError() {
+    if (loading) loading.style.display = 'none';
+    if (error) error.style.display = 'block';
+  }
+}
+
+// === DETECTIVE BOARD: BENANG MERAH ===
+function initDetectiveStrings() {
+  const board = document.getElementById('detective-board');
+  const svg = document.getElementById('string-svg') as unknown as SVGElement;
+  if (!board || !svg) return;
+
+  const pins = board.querySelectorAll('.pin');
+  const pinPositions: { cx: number; cy: number }[] = [];
+
+  pins.forEach(pin => {
+    const el = pin as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    const boardRect = board.getBoundingClientRect();
+    pinPositions.push({
+      cx: rect.left - boardRect.left + rect.width / 2,
+      cy: rect.top - boardRect.top + rect.height / 2,
+    });
+  });
+
+  // Update SVG lines berdasarkan posisi pin nyata
+  const lines = svg.querySelectorAll('line');
+  const connections = [
+    [0, 1], // ISPU → Proposal
+    [1, 2], // Proposal → Website
+    [2, 3], // Website → Identitas
+    [1, 4], // Proposal → MLOps
+    [2, 5], // Website → Lua
+  ];
+
+  lines.forEach((line, i) => {
+    const conn = connections[i];
+    if (!conn || !pinPositions[conn[0]] || !pinPositions[conn[1]]) return;
+    const a = pinPositions[conn[0]];
+    const b = pinPositions[conn[1]];
+    line.setAttribute('x1', String(a.cx));
+    line.setAttribute('y1', String(a.cy));
+    line.setAttribute('x2', String(b.cx));
+    line.setAttribute('y2', String(b.cy));
+  });
+}
+
+// === BOOKSHELF ===
+const coverCache: Record<string, string | null> = {};
+
+async function fetchCover(isbn: string) {
+  if (coverCache[isbn] !== undefined) return coverCache[isbn];
+  const url = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`;
+  try {
+    const res = await fetch(url);
+    if (res.ok) { coverCache[isbn] = url; return url; }
+  } catch {}
+  coverCache[isbn] = null;
+  return null;
+}
+
+function statusLabel(s: string) {
+  if (s === 'selesai') return 'Selesai Dibaca';
+  if (s === 'sedang-dibaca') return 'Sedang Dibaca';
+  return 'Wishlist';
+}
+
+function statusClass(s: string) {
+  if (s === 'selesai') return 'bs-done';
+  if (s === 'sedang-dibaca') return 'bs-reading';
+  return 'bs-wish';
+}
+
+async function renderBooks(filter = 'semua') {
+  const shelf = document.getElementById('bookshelf');
+  const loading = document.getElementById('shelf-loading');
+  if (!shelf || !loading) return;
+
+  const filtered = filter === 'semua'
+    ? BOOKS
+    : filter === 'sedang-dibaca'
+      ? BOOKS.filter(b => b.status === 'sedang-dibaca')
+      : BOOKS.filter(b => b.genre === filter);
+
+  const countEl = document.getElementById('book-count');
+  if (countEl) countEl.textContent = BOOKS.length.toString();
+
+  loading.style.display = 'block';
+  shelf.innerHTML = '';
+  shelf.appendChild(loading);
+
+  const fragment = document.createDocumentFragment();
+
+  await Promise.all(filtered.map(async (book, i) => {
+    const coverUrl = await fetchCover(book.isbn);
+    const spine = document.createElement('div');
+    spine.className = 'book-spine';
+    spine.dataset.index = i.toString();
+    spine.style.setProperty('--spine-color', book.color || '#333');
+    spine.setAttribute('title', book.title);
+
+    // Hanya tampilkan cover saja, tanpa nama
+    spine.innerHTML = `
+      <div class="spine-inner">
+        ${coverUrl
+          ? `<img src="${coverUrl}" alt="${book.title}" class="spine-cover" loading="lazy" />`
+          : `<div class="spine-fallback" style="background:${book.color || '#333'}">
+               <span class="spine-initial">${book.title.charAt(0)}</span>
+             </div>`
+        }
+        ${book.status === 'sedang-dibaca' ? '<div class="spine-reading-dot"></div>' : ''}
+      </div>
+    `;
+
+    // Hover tooltip
+    const tooltip = document.getElementById('book-tooltip');
+    const ttTitle = document.getElementById('tt-title');
+    const ttAuthor = document.getElementById('tt-author');
+
+    spine.addEventListener('mouseenter', (e) => {
+      if (tooltip && ttTitle && ttAuthor) {
+        ttTitle.textContent = book.title;
+        ttAuthor.textContent = book.author;
+        tooltip.style.display = 'block';
+        positionTooltip(e as MouseEvent, tooltip);
+      }
+    });
+    spine.addEventListener('mousemove', (e) => {
+      if (tooltip) positionTooltip(e as MouseEvent, tooltip);
+    });
+    spine.addEventListener('mouseleave', () => {
+      if (tooltip) tooltip.style.display = 'none';
+    });
+
+    spine.addEventListener('click', () => {
+      if (tooltip) tooltip.style.display = 'none';
+      openDetail(book, coverUrl);
+    });
+    fragment.appendChild(spine);
+  }));
+
+  loading.style.display = 'none';
+  shelf.appendChild(fragment);
+}
+
+function positionTooltip(e: MouseEvent, tooltip: HTMLElement) {
+  const x = e.clientX + 14;
+  const y = e.clientY - 36;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top  = y + 'px';
+}
+
+function openDetail(book: any, coverUrl: string | null) {
+  const panel = document.getElementById('book-detail');
+  const shelf = document.getElementById('bookshelf');
+  const filters = document.getElementById('book-filters');
+  if (!panel || !shelf || !filters) return;
+
+  const dg = document.getElementById('detail-genre');
+  const dt = document.getElementById('detail-title');
+  const da = document.getElementById('detail-author');
+  const dy = document.getElementById('detail-year');
+  const dn = document.getElementById('detail-note');
+  const ds = document.getElementById('detail-status');
+
+  if (dg) dg.textContent = book.genre.toUpperCase();
+  if (dt) dt.textContent = book.title;
+  if (da) da.textContent = 'oleh ' + book.author;
+  if (dy) dy.textContent = `${book.year}`;
+  if (dn) dn.textContent = book.note || '';
+  if (ds) {
+    ds.textContent = statusLabel(book.status);
+    ds.className = 'detail-status font-mono ' + statusClass(book.status);
+  }
+
+  const img = document.getElementById('detail-cover') as HTMLImageElement;
+  const fallback = document.getElementById('detail-cover-fallback');
+  const initial = document.getElementById('detail-cover-initial');
+  if (img && fallback) {
+    if (coverUrl) {
+      img.src = coverUrl;
+      img.style.display = 'block';
+      fallback.style.display = 'none';
+    } else {
+      img.style.display = 'none';
+      fallback.style.display = 'flex';
+      fallback.style.background = book.color || '#333';
+      if (initial) initial.textContent = book.title.charAt(0);
+    }
+  }
+
+  shelf.style.display = 'none';
+  filters.style.display = 'none';
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function closeDetail() {
+  const panel = document.getElementById('book-detail');
+  const shelf = document.getElementById('bookshelf');
+  const filters = document.getElementById('book-filters');
+  if (panel && shelf && filters) {
+    panel.style.display = 'none';
+    shelf.style.display = 'flex';
+    filters.style.display = 'flex';
+  }
+}
+
+function setupEventListeners() {
+  document.getElementById('detail-close')?.addEventListener('click', closeDetail);
+
+  document.querySelectorAll('.bfilter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.bfilter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = (btn as HTMLButtonElement).dataset.filter;
+      renderBooks(filter);
+      closeDetail();
+    });
+  });
+}
+
+function init() {
+  fetchSpotify();
+  renderBooks().then(() => {
+    // Tunggu render selesai lalu init benang
+    setTimeout(initDetectiveStrings, 100);
+  });
+  setupEventListeners();
+
+  // Re-init benang pas resize
+  window.addEventListener('resize', initDetectiveStrings);
+}
+
+document.addEventListener('astro:page-load', init);
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+<style>
+  /* ===== DESIGN TOKENS ===== */
+  .page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  .page-header { margin-bottom: 4rem; }
+  .page-eyebrow {
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+  .page-title {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--text-primary);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .page-desc {
+    color: var(--text-secondary);
+    max-width: 580px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  /* Bento Layout */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.75rem;
+  }
+  .card-sm { grid-column: span 4; }
+  .card-lg { grid-column: span 8; }
+  .card-xl { grid-column: span 12; }
+
+  .section-label {
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    opacity: 0.8;
+  }
+
+  /* ===== SPOTIFY CARD ===== */
+  .spotify-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 320px;
+  }
+  .vinyl-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+  .vinyl {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a1813 24%, #0f0e0a 24%, #0f0e0a 40%, #1a1813 40%, #1a1813 55%, #0f0e0a 55%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.05);
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  }
+  .vinyl-art {
+    position: absolute; top:0; left:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0.55;
+  }
+  .vinyl-center {
+    width:24px; height:24px;
+    border-radius: 50%;
+    background: #0d0c08;
+    border: 2px solid var(--border);
+    z-index: 2;
+  }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .vinyl.spinning { animation: spin 5s linear infinite; }
+
+  .track-info { margin-top: auto; }
+  .track-name {
+    font-family: var(--font-heading), serif;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+    line-height: 1.25;
+    font-weight: 400;
+  }
+  .track-artist {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  .track-status {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    display: flex; align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+  .dot-live {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+  .dot-live.live {
+    background: #1DB954;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  .spotify-footer {
+    margin-top: 1.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+  .spotify-link {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    display: inline-flex; align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: all 0.2s;
+  }
+  .spotify-link:hover { opacity: 1; color: #1DB954; }
+  .error-text { font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.6; text-align: center; }
+  .loading-text { font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 0.5rem; animation: pulse 2s infinite; }
+
+  /* ===== DETECTIVE BOARD ===== */
+  .detective-card { display: flex; flex-direction: column; gap: 0.5rem; }
+  .detective-sub { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5; }
+
+  .board {
+    position: relative;
+    width: 100%;
+    height: 470px;
+    background-color: #090806;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.012) 1px, transparent 0),
+      linear-gradient(to right, rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 18px 18px, 36px 36px, 36px 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.85);
+  }
+
+  /* SVG string layer */
+  .string-layer {
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+  }
+  .str-line {
+    fill: none;
+    stroke-linecap: round;
+  }
+  .red-str {
+    stroke: #9B2335;
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+    opacity: 0.75;
+    filter: drop-shadow(0 0 3px rgba(155, 35, 53, 0.5));
+  }
+  .red-str-dash {
+    stroke: #9B2335;
+    stroke-width: 1.2;
+    stroke-dasharray: 4 5;
+    opacity: 0.45;
+  }
+  .teal-str {
+    stroke: #2E7A8C;
+    stroke-width: 1.2;
+    stroke-dasharray: 3 4;
+    opacity: 0.6;
+  }
+  .green-str {
+    stroke: #3B8C46;
+    stroke-width: 1.2;
+    stroke-dasharray: 3 5;
+    opacity: 0.5;
+  }
+  .faint-str {
+    stroke: rgba(255,255,255,0.15);
+    stroke-width: 0.8;
+    stroke-dasharray: 2 6;
+    opacity: 0.3;
+  }
+
+  /* Pins */
+  .pin {
+    position: absolute;
+    z-index: 3;
+    cursor: default;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s;
+  }
+  .pin:hover { z-index: 10; transform: scale(1.04) translateY(-2px) !important; }
+  .pin-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin: 0 auto 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.08);
+    position: relative; z-index: 4;
+  }
+  .pin-red  { background: #C0392B; box-shadow: 0 2px 8px rgba(192, 57, 43, 0.7), 0 0 0 1px rgba(255,255,255,0.08); }
+  .pin-teal { background: #2482A6; box-shadow: 0 2px 8px rgba(36, 130, 166, 0.6), 0 0 0 1px rgba(255,255,255,0.08); }
+  .pin-green { background: #3FA624; box-shadow: 0 2px 8px rgba(63, 166, 36, 0.6), 0 0 0 1px rgba(255,255,255,0.08); }
+
+  /* Notes */
+  .note {
+    background: #131109;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 0.65rem 0.75rem;
+    max-width: 170px;
+    box-shadow: 4px 6px 18px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.03);
+    border-radius: 1px;
+    transition: box-shadow 0.2s;
+  }
+  .note-hover:hover {
+    box-shadow: 6px 8px 24px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .note-yellow { background: #141208; border-color: rgba(217,192,108,0.07); }
+  .note-photo  { background: #0b0d0f; border-color: rgba(255,255,255,0.04); }
+  .note-torn {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 94%, 93% 100%, 85% 95%, 72% 98%, 55% 93%, 38% 97%, 25% 93%, 0% 96%);
+  }
+  .note-small { max-width: 145px; }
+  .note-label {
+    font-size: 0.52rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+  .note-title {
+    font-family: var(--font-heading), serif;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    margin-bottom: 0.28rem;
+    line-height: 1.3;
+  }
+  .note-body {
+    font-size: 0.63rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .note-tags {
+    display: flex; gap: 0.3rem; flex-wrap: wrap;
+    margin-top: 0.45rem;
+  }
+  .ntag {
+    font-size: 0.5rem; letter-spacing: 0.06em;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.45);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-family: var(--font-mono, monospace);
+  }
+  .ntag-red   { border-color: rgba(192, 57, 43, 0.3); color: rgba(192, 57, 43, 0.8); }
+  .ntag-green { border-color: rgba(63, 166, 36, 0.3); color: rgba(63, 166, 36, 0.7); }
+
+  /* Polaroid */
+  .polaroid {
+    position: absolute;
+    background: #13110d;
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 5px 5px 16px 5px;
+    box-shadow: 5px 7px 20px rgba(0,0,0,0.7);
+    z-index: 2;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+  }
+  .polaroid:hover {
+    transform: scale(1.07) rotate(0deg) !important;
+    z-index: 10;
+    box-shadow: 8px 10px 30px rgba(0,0,0,0.9);
+  }
+  .polaroid-img {
+    width: 60px; height: 52px;
+    background: #090806;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    border-radius: 1px;
+  }
+  .polaroid-caption {
+    font-size: 0.48rem; text-align: center;
+    margin-top: 5px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em;
+  }
+
+  /* Sticky notes */
+  .sticky {
+    position: absolute;
+    padding: 5px 9px;
+    z-index: 2;
+    border-radius: 1px;
+  }
+  .sticky-teal  { background: #0b1214; border: 1px solid rgba(36, 130, 166, 0.15); }
+  .sticky-red   { background: #130c0c; border: 1px solid rgba(192, 57, 43, 0.15); }
+  .sticky-text  { font-size: 0.62rem; color: rgba(255,255,255,0.5); }
+
+  /* ===== BOOKSHELF — RAK VISUAL ===== */
+  .library-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    padding-bottom: 1rem;
+  }
+  .library-sub { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+  .library-meta { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.55; white-space: nowrap; }
+
+  .book-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+  .bfilter {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.04em;
+  }
+  .bfilter:hover, .bfilter.active {
+    border-color: var(--accent);
+    color: var(--text-primary);
+    background: rgba(166, 36, 36, 0.06);
+  }
+
+  /* Rak buku — spine style, tanpa nama */
+  .shelf-visual {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    align-items: flex-end;
+    padding: 1.25rem 1rem 0;
+    background: 
+      linear-gradient(to bottom, transparent 85%, rgba(255,255,255,0.025) 85%, rgba(255,255,255,0.025) 88%, transparent 88%);
+    min-height: 180px;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  /* shadow di bawah rak */
+  .shelf-visual::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 0 0 2px 2px;
+  }
+
+  .book-spine {
+    width: 40px;
+    height: 150px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0s;
+    flex-shrink: 0;
+    border-radius: 1px 2px 2px 1px;
+    overflow: hidden;
+    margin-right: 3px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+  }
+  .book-spine:hover {
+    transform: translateY(-12px) scale(1.05);
+    z-index: 5;
+    box-shadow: 4px 8px 20px rgba(0,0,0,0.8);
+  }
+  .spine-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    border-left: 3px solid var(--spine-color, #333);
+  }
+  .spine-cover {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0 1px 1px 0;
+  }
+  .spine-fallback {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--spine-color, #333);
+  }
+  .spine-initial {
+    font-family: var(--font-heading), serif;
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+  }
+
+  /* Dot untuk buku sedang dibaca */
+  .spine-reading-dot {
+    position: absolute;
+    top: 6px; right: 5px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #1DB954;
+    box-shadow: 0 0 4px #1DB954;
+    animation: pulse 2s infinite;
+    z-index: 2;
+  }
+
+  /* Tooltip hover buku */
+  .book-tooltip {
+    position: fixed;
+    background: #111009;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 0.5rem 0.75rem;
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 4px 6px 16px rgba(0,0,0,0.8);
+    max-width: 220px;
+    animation: fadeIn 0.12s ease;
+  }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform: translateY(0); } }
+  .tooltip-title { font-size: 0.72rem; color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.3; }
+  .tooltip-author { font-size: 0.62rem; color: var(--text-secondary); opacity: 0.7; }
+
+  .shelf-loading { font-size: 0.75rem; color: rgba(255,255,255,0.25); padding: 1rem; animation: pulse 2s infinite; }
+
+  /* ===== BOOK DETAIL PANEL ===== */
+  .book-detail {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.01);
+    padding: 2rem;
+    border-radius: var(--radius);
+    animation: slideUp 0.3s cubic-bezier(0.1, 0.8, 0.3, 1);
+    margin-top: 1rem;
+  }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .detail-close {
+    background: transparent; border: none;
+    color: var(--text-secondary);
+    cursor: pointer; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+    padding: 0;
+  }
+  .detail-close:hover { color: var(--text-primary); }
+  .detail-inner { display: flex; gap: 2.5rem; }
+
+  .detail-cover-container {
+    flex-shrink: 0;
+    box-shadow: 8px 12px 28px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    width: 140px;
+  }
+  .detail-cover { width: 140px; aspect-ratio: 2/3; object-fit: cover; display: block; }
+  .detail-cover-fallback {
+    width: 140px;
+    aspect-ratio: 2/3;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-heading), serif;
+    font-size: 3rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+
+  .detail-info { display: flex; flex-direction: column; width: 100%; }
+  .detail-genre { font-size: 0.62rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+  .detail-title { font-family: var(--font-heading), serif; font-size: 1.75rem; color: var(--text-primary); font-weight: 400; margin-bottom: 0.4rem; line-height: 1.2; }
+  .detail-author { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
+  .detail-year { font-size: 0.72rem; color: rgba(255,255,255,0.28); margin-bottom: 1.25rem; }
+  .detail-divider { height: 1px; background: rgba(255,255,255,0.05); margin-bottom: 1.25rem; }
+  .detail-note {
+    font-size: 0.95rem; color: var(--text-secondary);
+    line-height: 1.7; max-width: 650px;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  .detail-note::before {
+    content: '"';
+    position: absolute; left: 0; top: -0.15rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+    opacity: 0.5;
+    font-family: var(--font-heading), serif;
+    line-height: 1;
+  }
+  .detail-status {
+    align-self: flex-start;
+    font-size: 0.62rem;
+    padding: 0.25rem 0.85rem;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .bs-done    { border-color: rgba(63,166,36,0.3); color: rgba(63,166,36,0.8); }
+  .bs-reading { border-color: rgba(29,185,84,0.4); color: #1DB954; }
+  .bs-wish    { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .card-sm, .card-lg { grid-column: span 12; }
+    .board { height: 500px; }
+  }
+  @media (max-width: 768px) {
+    .page-container { padding: 3rem 1.25rem; }
+    .detail-inner { flex-direction: column; gap: 1.5rem; }
+    .detail-cover { width: 110px; }
+    .detail-cover-container { width: 110px; }
+    .string-layer line { stroke-width: 1; }
+    .book-spine { width: 32px; height: 120px; }
+  }
+</style>
