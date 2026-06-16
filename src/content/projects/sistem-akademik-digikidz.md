@@ -1,7 +1,7 @@
 ---
 title: "Sistem Manajemen Akademik DigiKidz"
 description: "Aplikasi manajemen lembaga coding berbasis Java Swing — mengelola data siswa, jadwal kelas, laporan progress, dan histori pembayaran."
-status: "Selesai"
+status: "Sedang Berjalan"
 tags: ["Java", "Swing", "OOP", "SQLite", "JDBC"]
 category: "Mengajar"
 metric: "Mengelola 4 kelas aktif, 40+ siswa"

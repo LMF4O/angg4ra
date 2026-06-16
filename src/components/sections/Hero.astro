@@ -188,32 +188,6 @@ const sections = lang === 'id'
   </div>
 </section>
 
-<!-- Section preview cards -->
-<section class="overview-section">
-  <div class="overview-grid">
-    {sections.map((s, i) => (
-      <a href={s.href} class="overview-card" data-key={s.key} style={`--delay: ${i * 70}ms; --card-i: ${i}`}>
-        <div class="card-glow" aria-hidden="true"></div>
-        <div class="card-accent-line" aria-hidden="true"></div>
-
-        <div class="card-top">
-          <div class="card-label-group">
-            <span class="card-icon" aria-hidden="true">{sectionIcons[s.key as keyof typeof sectionIcons] ?? '○'}</span>
-            <span class="card-label font-mono">{s.label}</span>
-          </div>
-          <span class="card-tag font-mono">{s.tag}</span>
-        </div>
-
-        <p class="card-preview">{s.preview}</p>
-        {s.meta && <span class="card-meta font-mono">{s.meta}</span>}
-
-        <div class="card-footer">
-          <span class="card-cta font-mono">{lang === 'id' ? 'Lihat' : 'View'} <span class="card-arrow">→</span></span>
-        </div>
-      </a>
-    ))}
-  </div>
-</section>
 
 <style>
   /* ── Hero ── */
@@ -394,12 +368,6 @@ const sections = lang === 'id'
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem 6rem;
-  }
-
-  .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
   }
 
   .overview-card {
@@ -596,14 +564,9 @@ const sections = lang === 'id'
   }
 
   @media (max-width: 768px) {
-    .overview-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
   }
 
   @media (max-width: 480px) {
-    .overview-grid { grid-template-columns: 1fr; gap: 8px; }
   }
 </style>
 

@@ -5,22 +5,18 @@ const { lang = 'id', currentPath = '' } = Astro.props;
 
 const navLinks = lang === 'id'
   ? [
-      { href: `/${lang}/about`,      label: 'Tentang' },
-      { href: `/${lang}/projects`,   label: 'Proyek' },
-      { href: `/${lang}/skills`,     label: 'Skill' },
-      { href: `/${lang}/experience`, label: 'Pengalaman' },
-      { href: `/${lang}/blog`,       label: 'Blog' },
-      { href: `/${lang}/misc`,    label: 'Misc' },
-      { href: `/${lang}/contact`,    label: 'Kontak' },
+      { href: `/${lang}/`,         label: 'Home' },
+      { href: `/${lang}/projects`, label: 'Proyek' },
+      { href: `/${lang}/blog`,     label: 'Blog' },
+      { href: `/${lang}/misc`,     label: 'Misc' },
+      { href: `/${lang}/contact`,  label: 'Kontak' },
     ]
   : [
-      { href: `/${lang}/about`,      label: 'About' },
-      { href: `/${lang}/projects`,   label: 'Projects' },
-      { href: `/${lang}/skills`,     label: 'Skills' },
-      { href: `/${lang}/experience`, label: 'Experience' },
-      { href: `/${lang}/blog`,       label: 'Blog' },
-      { href: `/${lang}/misc`,    label: 'Misc' },
-      { href: `/${lang}/contact`,    label: 'Contact' },
+      { href: `/${lang}/`,         label: 'Home' },
+      { href: `/${lang}/projects`, label: 'Projects' },
+      { href: `/${lang}/blog`,     label: 'Blog' },
+      { href: `/${lang}/misc`,     label: 'Misc' },
+      { href: `/${lang}/contact`,  label: 'Contact' },
     ];
 ---
 
