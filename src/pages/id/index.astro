@@ -48,54 +48,59 @@ const skillCategories = [
 
 const experiences = [
   {
-    role: 'Coding Educator',
+    role: 'Coach',
     company: 'PT DigiKidz Indonesia',
-    location: 'Cibubur, Jakarta Timur',
-    period: 'Jan 2024 — Sekarang',
+    location: 'Bogor, Jawa Barat',
+    period: 'Agu 2025 - Sekarang',
     type: 'Part-time',
     color: '#6A8F6E',
     points: [
-      'Mengajar pemrograman dan computational thinking ke anak-anak usia 7–15 tahun.',
-      'Menyusun laporan pembelajaran terstruktur per sesi untuk setiap murid.',
-      'Mengadaptasi materi ajar sesuai level pemahaman tiap anak secara individual.',
-      'Memperkenalkan konsep algoritma dan logika lewat game dan proyek kecil.',
+      'Mengajar coding dan computational thinking ke anak-anak usia 7-15 tahun dengan cara yang menyenangkan.',
+      'Bikin laporan perkembangan belajar tiap murid setiap sesi secara rutin.',
+      'Menyesuaikan cara ngajar sesuai kemampuan masing-masing anak supaya lebih mudah dipahami.',
+      'Ngenalin konsep algoritma dan logika lewat game dan proyek kecil yang relevan buat mereka.',
     ],
   },
   {
-    role: 'Freelance Web Developer',
-    company: 'Independent',
-    location: 'Remote',
-    period: '2023 — 2024',
+    role: 'Website Developer',
+    company: 'PT Kolindo Bina Nusantara',
+    location: 'South Jakarta, Jakarta',
+    period: 'Jun 2024 - Jul 2024',
     type: 'Freelance',
     color: '#3A6B7A',
     points: [
-      'Membangun website profil dan portofolio untuk klien individu.',
-      'Mengerjakan landing page dengan HTML, CSS, dan JavaScript vanilla.',
-      'Berkoordinasi langsung dengan klien untuk kebutuhan desain dan konten.',
+      'Bangun website responsif pakai HTML, CSS, dan JavaScript supaya bisa diakses nyaman di berbagai perangkat.',
+      'Urus hosting dan setup domain .co.id termasuk optimasi performa dan keamanan sitenya.',
+      'Jalankan debugging dan functional testing buat mastiin uptime 99% dan pengalaman user yang mulus.',
+      'Pasang analytics dasar buat ngelihat perilaku user dan bantu improve alur navigasi.',
     ],
   },
   {
-    role: 'Hak Paten Software',
-    company: 'DJKI — Kemenkumham RI',
-    location: 'Indonesia',
-    period: '2025',
-    type: 'Achievement',
+    role: 'Back End Developer',
+    company: 'SMK Negeri 24 Jakarta',
+    location: 'East Jakarta, Jakarta',
+    period: 'Feb 2022 - Feb 2022',
+    type: 'Internship',
     color: '#6B2D3E',
     points: [
-      'Mendaftarkan karya cipta software website desa wisata (EC00202500538).',
-      'Proyek dikembangkan sebagai solusi promosi digital untuk desa wisata lokal.',
+      'Bersihin dan normalisasi database MySQL, hapus lebih dari 500 data duplikat biar datanya lebih akurat.',
+      'Bikin RESTful API pakai Laravel dan PHP buat lancarkan komunikasi data internal.',
+      'Rancang dashboard interaktif berbasis PHP dan MySQL untuk monitoring data secara real-time.',
+      'Bantu integrasi frontend dan pastiin data bisa diambil dengan mulus buat fitur pelaporan.',
     ],
   },
   {
-    role: 'Asisten Praktikum',
-    company: 'UNINDRA',
-    location: 'Jakarta Selatan',
-    period: '2024',
-    type: 'Part-time',
+    role: 'Website Developer',
+    company: 'PT Solusi Bersama',
+    location: 'Depok, Jawa Barat',
+    period: 'Jan 2021 - Jun 2021',
+    type: 'Freelance',
     color: '#7A6B3A',
     points: [
-      'Membantu dosen dalam sesi praktikum mata kuliah pemrograman.',
-      'Membimbing mahasiswa dalam pemecahan masalah kode secara langsung.',
+      'Bikin website dari nol buat UMKM pakai HTML, CSS, dan JavaScript biar mereka punya kehadiran digital.',
+      'Desain antarmuka web yang responsif lengkap dengan form untuk ngumpulin data dari pengguna.',
+      'Ngobrol langsung sama klien buat ngerti kebutuhan bisnis mereka dan kasih solusi yang pas.',
+      'Tambahkan logika backend sederhana untuk handle input data yang juga jadi dasar analitik awal.',
     ],
   },
 ];
@@ -104,41 +109,39 @@ const education = [
   {
     degree: 'S1 Sistem Informasi',
     institution: 'Universitas Indraprasta PGRI (UNINDRA)',
-    period: '2023 — Sekarang',
+    period: '2023 - 2027',
     gpa: '3.77',
     color: '#3A6B7A',
     highlights: [
-      'Semester 6 — target lulus 2026',
-      'Fokus: Machine Learning, Basis Data, Rekayasa Perangkat Lunak',
-      'Skripsi: CRM + prediksi performa siswa berbasis ML untuk DigiKidz',
+      'Jurusan Sistem Informasi, IPK 3.77',
+      'Aktif kuliah sambil kerja part-time di bidang yang relevan',
+      'Fokus di Machine Learning, Basis Data, dan Rekayasa Perangkat Lunak',
     ],
   },
   {
-    degree: 'SMK — Rekayasa Perangkat Lunak',
-    institution: 'SMKN 1 Cikarang Barat',
-    period: '2020 — 2023',
+    degree: 'Computer Software Engineering',
+    institution: 'SMK Negeri 24 Jakarta',
+    period: '2020 - 2023',
     gpa: null,
     color: '#6A8F6E',
     highlights: [
       'Jurusan Rekayasa Perangkat Lunak',
-      'Dasar pemrograman, basis data, dan pengembangan aplikasi',
+      'Belajar dasar pemrograman, basis data, dan pengembangan aplikasi dari sini',
     ],
   },
 ];
 
 const certifications = [
-  { name: 'Belajar Machine Learning untuk Pemula', issuer: 'Dicoding', year: '2024' },
-  { name: 'Python for Data Science',               issuer: 'Kaggle',   year: '2024' },
-  { name: 'SQL for Data Analysis',                 issuer: 'Kaggle',   year: '2024' },
-  { name: 'Data Visualization',                    issuer: 'Kaggle',   year: '2024' },
-  { name: 'Intro to Machine Learning',             issuer: 'Kaggle',   year: '2024' },
-  { name: 'Intermediate Machine Learning',         issuer: 'Kaggle',   year: '2024' },
-  { name: 'Belajar Dasar SQL',                     issuer: 'Dicoding', year: '2024' },
-  { name: 'Belajar Analisis Data dengan Python',   issuer: 'Dicoding', year: '2024' },
-  { name: 'Belajar Dasar AI',                      issuer: 'Dicoding', year: '2024' },
-  { name: 'Belajar Membuat Aplikasi Web',          issuer: 'Dicoding', year: '2023' },
-  { name: 'Feature Engineering',                   issuer: 'Kaggle',   year: '2024' },
-  { name: 'Pandas',                                issuer: 'Kaggle',   year: '2024' },
+  { name: 'Data Visualization with Python',                        issuer: 'Dicoding', year: '2025' },
+  { name: 'Fundamentals of Artificial Intelligence',               issuer: 'Dicoding', year: '2025' },
+  { name: 'Introduction to Data Science',                          issuer: 'Dicoding', year: '2025' },
+  { name: 'Python Programming Basics',                             issuer: 'Dicoding', year: '2025' },
+  { name: 'SQL for Data Analysts',                                 issuer: 'Dicoding', year: '2025' },
+  { name: 'Certificate of Competence in Computer Programming',     issuer: 'BNSP',     year: '2023' },
+  { name: 'Mini Bootcamp: Data Science Essentials',                issuer: 'DQLab',    year: '2024' },
+  { name: 'Python for Data Science',                               issuer: 'DQLab',    year: '2024' },
+  { name: 'R for Data Science',                                    issuer: 'DQLab',    year: '2024' },
+  { name: 'SQL Fundamentals for Data Analysis',                    issuer: 'DQLab',    year: '2024' },
 ];
 ---
 
@@ -175,10 +178,10 @@ const certifications = [
           <BentoCard size="lg">
             <p class="card-eyebrow font-mono">/ siapa saya</p>
             <p class="bio-text">
-              Saya Argy Anggara. mahasiswa Sistem Informasi semester 6 yang menemukan data sebagai medium eksplorasi, bukan sekadar alat kerja. Dari web development ke machine learning, saya selalu mencari pola di balik setiap informasi.
+              Saya Argy Anggara, mahasiswa Sistem Informasi yang udah lumayan lama main-main di dunia web development sebelum akhirnya jatuh ke data dan machine learning. Buat saya, data bukan cuma alat kerja, tapi cara buat ngerti sesuatu lebih dalam.
             </p>
             <p class="bio-text">
-              Saat ini mengajar computational thinking di DigiKidz Indonesia, dan membangun skripsi tentang prediksi performa siswa berbasis ML. Analisis yang baik bukan yang paling rumit — yang paling bisa dipahami orang lain.
+              Sekarang sambil kuliah saya ngajar coding ke anak-anak di DigiKidz, sambil ngerjain skripsi soal prediksi performa siswa pakai ML. Bagi saya, analisis yang bagus bukan yang paling canggih, tapi yang paling gampang dipahami orang lain.
             </p>
             <div class="bio-tags">
               {['Machine Learning', 'Data Analysis', 'Web Dev', 'Teaching', 'INTP'].map(t => (
