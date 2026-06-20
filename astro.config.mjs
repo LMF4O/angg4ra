@@ -5,9 +5,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://angg4ra.my.id',
 
-  integrations: [
-    sitemap(),
-  ],
+  integrations: [sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
