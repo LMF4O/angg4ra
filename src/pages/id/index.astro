@@ -4,48 +4,6 @@ import Hero from '../../components/sections/Hero.astro';
 import BentoCard from '../../components/ui/BentoCard.astro';
 import FeaturedProjects from '../../components/sections/FeaturedProjects.astro';
 
-const skillCategories = [
-  {
-    id: 'data', category: 'Data & Analytics', color: 'var(--accent-data)', hex: '6A8F6E',
-    icons: [
-      { name: 'Python',      slug: 'python' },
-      { name: 'Pandas',      slug: 'pandas' },
-      { name: 'Scikit-learn',slug: 'scikitlearn' },
-      { name: 'NumPy',       slug: 'numpy' },
-      { name: 'Jupyter',     slug: 'jupyter' },
-      { name: 'Kaggle',      slug: 'kaggle' },
-    ],
-    extra: ['SHAP', 'Matplotlib', 'Seaborn', 'SQL'],
-  },
-  {
-    id: 'web', category: 'Web Development', color: 'var(--accent-sci)', hex: '3A6B7A',
-    icons: [
-      { name: 'JavaScript',  slug: 'javascript' },
-      { name: 'TypeScript',  slug: 'typescript' },
-      { name: 'Astro',       slug: 'astro' },
-      { name: 'Next.js',     slug: 'nextdotjs' },
-      { name: 'React',       slug: 'react' },
-      { name: 'Tailwind',    slug: 'tailwindcss' },
-    ],
-    extra: ['Framer Motion', 'HTML & CSS', 'Vite'],
-  },
-  {
-    id: 'tools', category: 'Tools & Lainnya', color: 'var(--accent)', hex: '6B2D3E',
-    icons: [
-      { name: 'Git',         slug: 'git' },
-      { name: 'GitHub',      slug: 'github' },
-      { name: 'Figma',       slug: 'figma' },
-      { name: 'VS Code',     slug: 'v' },
-      { name: 'FastAPI',     slug: 'fastapi' },
-      { name: 'SQLite',      slug: 'sqlite' },
-      { name: 'Counter Strike', slug: 'counterstrike' },
-      { name: 'Valorant',    slug: 'valorant' },
-      { name: 'Duolingo',    slug: 'duolingo' },
-    ],
-    extra: ['Excel', 'Java Swing', 'Roblox Studio', 'Lua'],
-  },
-];
-
 const experiences = [
   {
     role: 'Coding Educator',
@@ -75,27 +33,27 @@ const experiences = [
     ],
   },
   {
-    role: 'Hak Paten Software',
+    role: 'Pemegang Hak Paten Software',
     company: 'Desa Ciherang',
     location: 'Indonesia',
     period: '2025',
     type: 'Achievement',
     color: '#6B2D3E',
     points: [
-      'Mendaftarkan karya cipta software website desa wisata (EC00202500538).',
+      'Berhasil mendaftarkan Hak Cipta/Paten software website desa wisata dengan nomor registrasi EC00202500538.',
       'Proyek dikembangkan sebagai solusi promosi digital untuk desa wisata lokal.',
     ],
   },
   {
-    role: 'Back-end Developer',
+    role: 'Backend Developer',
     company: 'SMK Negeri 24 Jakarta',
-    location: '',
+    location: 'Jakarta',
     period: '2022',
     type: 'Part-time',
     color: '#7A6B3A',
     points: [
-      'Membantu pembuatan Website LSP untuk Sekolah.',
-      'Membuat api dan merapihkan alur logika back-end.',
+      'Berkontribusi dalam pengembangan Website LSP (Lembaga Sertifikasi Profesi) untuk instansi sekolah.',
+      'Merancang dan mengintegrasikan API serta mengoptimalkan alur logika pada sisi backend.',
     ],
   },
 ];
@@ -114,14 +72,14 @@ const education = [
     ],
   },
   {
-    degree: 'SMK - Rekayasa Perangkat Lunak',
-    institution: 'SMK Negeri 24 Jakarta',
+    degree: 'SMK Negeri 24 Jakarta',
+    institution: 'Rekayasa Perangkat Lunak',
     period: '2020 — 2023',
     gpa: null,
     color: '#6A8F6E',
     highlights: [
-      'Jurusan Rekayasa Perangkat Lunak',
-      'Dasar pemrograman, basis data, dan pengembangan aplikasi',
+      'Awal mula terjerumus ke kode.',
+      'Dasar pemrograman, basis data, dan pengembangan aplikasi.',
     ],
   },
 ];
@@ -140,6 +98,22 @@ const certifications = [
   { name: 'Feature Engineering',                   issuer: 'Kaggle',   year: '2024' },
   { name: 'Pandas',                                issuer: 'Kaggle',   year: '2024' },
 ];
+
+// Tools data analyst — dipakai untuk logo marquee.
+const dataTools = [
+  { name: 'Python',       slug: 'python' },
+  { name: 'Pandas',       slug: 'pandas' },
+  { name: 'NumPy',        slug: 'numpy' },
+  { name: 'Scikit-learn', slug: 'scikitlearn' },
+  { name: 'SQL',          slug: 'mysql' },
+  { name: 'SHAP',         slug: 'shap' },
+  { name: 'Jupyter',      slug: 'jupyter' },
+  { name: 'Matplotlib',   slug: 'matplotlib' },
+  { name: 'Seaborn',      slug: 'seaborn' },
+  { name: 'Excel',        slug: 'microsoftexcel' },
+];
+// Duplikasi list supaya marquee terasa penuh & loop-nya seamless (tanpa gap di tengah).
+const dataToolsLoop = [...dataTools, ...dataTools, ...dataTools];
 ---
 
 <BaseLayout title="Beranda" lang="id">
@@ -164,7 +138,7 @@ const certifications = [
         <div class="g-3">
           <BentoCard size="sm">
             <div class="photo-wrap">
-              <div class="photo-placeholder font-mono">AG</div>
+              <img src="/public/images/argy.png" alt="Argy Anggara">
               <div class="photo-glow" aria-hidden="true"></div>
             </div>
           </BentoCard>
@@ -228,11 +202,7 @@ const certifications = [
             <p class="card-eyebrow font-mono">/ angka</p>
             <div class="mini-stats">
               <div class="mini-stat">
-                <span class="ms-val font-mono" style="color:#6A8F6E">3.77</span>
-                <span class="ms-lbl font-mono">IPK</span>
-              </div>
-              <div class="mini-stat">
-                <span class="ms-val font-mono" style="color:#3A6B7A">6+</span>
+                <span class="ms-val font-mono" style="color:#3A6B7A">8+</span>
                 <span class="ms-lbl font-mono">Proyek</span>
               </div>
               <div class="mini-stat">
@@ -248,9 +218,10 @@ const certifications = [
   </section>
 
   <!-- ══════════════════════════════════
-       SKILLS — Layout full seperti gambar
+       SKILLS — Logo marquee
+       (fokus tools data analyst)
   ══════════════════════════════════ -->
-  <section class="page-section" id="skills">
+  <section class="page-section skills-section" id="skills">
     <div class="glow glow-teal" aria-hidden="true"></div>
     <div class="section-wrap">
 
@@ -258,65 +229,45 @@ const certifications = [
         <span class="marker-line"></span>
         <p class="marker-label font-mono">/ skill</p>
       </div>
-      <p class="section-desc">Alat dan teknologi yang saya gunakan sehari-hari.</p>
+      <p class="section-desc">Tools yang saya pakai untuk mengolah dan memahami data.</p>
 
-      <!-- Row 1: Data + Web side by side -->
-      <div class="skill-row-top">
-        {skillCategories.slice(0, 2).map(cat => (
-          <div class="skill-box">
-            <p class="skill-box-label font-mono" style={`color:${cat.color}`}>/ {cat.category.toUpperCase()}</p>
-            <div class="icon-grid">
-              {cat.icons.map(icon => (
-                <div class="icon-item">
-                  <div class="icon-wrap" style={`--hc:${cat.color}`}>
-                    <img
-                      src={`https://cdn.simpleicons.org/${icon.slug}/${cat.hex}`}
-                      alt={icon.name} width="28" height="28" loading="lazy"
-                    />
-                  </div>
-                  <span class="icon-label font-mono">{icon.name}</span>
-                </div>
-              ))}
-            </div>
-            {cat.extra.length > 0 && (
-              <div class="extra-pills">
-                {cat.extra.map(t => (
-                  <span class="extra-pill font-mono" style={`--hc:${cat.color}`}>{t}</span>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+    </div>
 
-      <!-- Row 2: Tools full width -->
-      <div class="skill-box skill-box-full">
-        <p class="skill-box-label font-mono" style={`color:${skillCategories[2].color}`}>
-          / {skillCategories[2].category.toUpperCase()}
-        </p>
-        <div class="icon-grid icon-grid-wide">
-          {skillCategories[2].icons.map(icon => (
-            <div class="icon-item">
-              <div class="icon-wrap" style={`--hc:${skillCategories[2].color}`}>
-                <img
-                  src={`https://cdn.simpleicons.org/${icon.slug}/${skillCategories[2].hex}`}
-                  alt={icon.name} width="28" height="28" loading="lazy"
-                />
-              </div>
-              <span class="icon-label font-mono">{icon.name}</span>
-            </div>
+    <!-- Logo marquee — full bleed, lepas dari max-width section-wrap -->
+    <div class="logo-marquee" aria-label={dataTools.map(t => t.name).join(', ')}>
+
+      <!-- Baris 1: geser ke kiri -->
+      <div class="marquee-row marquee-row--left">
+        <div class="marquee-track">
+          {dataToolsLoop.map(tool => (
+            <span class="marquee-logo" title={tool.name} data-fallback={tool.name}>
+              <img
+                src={`https://cdn.simpleicons.org/${tool.slug}`}
+                alt={tool.name} width="56" height="56" loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.classList.add('marquee-logo--fallback');"
+              />
+            </span>
           ))}
         </div>
-        {skillCategories[2].extra.length > 0 && (
-          <div class="extra-pills">
-            {skillCategories[2].extra.map(t => (
-              <span class="extra-pill font-mono" style={`--hc:${skillCategories[2].color}`}>{t}</span>
-            ))}
-          </div>
-        )}
+      </div>
+
+      <!-- Baris 2: geser ke kanan -->
+      <div class="marquee-row marquee-row--right">
+        <div class="marquee-track">
+          {dataToolsLoop.map(tool => (
+            <span class="marquee-logo" title={tool.name} data-fallback={tool.name}>
+              <img
+                src={`https://cdn.simpleicons.org/${tool.slug}`}
+                alt={tool.name} width="56" height="56" loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.classList.add('marquee-logo--fallback');"
+              />
+            </span>
+          ))}
+        </div>
       </div>
 
     </div>
+
   </section>
 
   <!-- ══════════════════════════════════
@@ -335,9 +286,8 @@ const certifications = [
       <div class="stats-strip">
         {[
           { val: '1+',   lbl: 'Tahun Mengajar', color: '#6A8F6E' },
-          { val: '3.77', lbl: 'IPK',             color: '#3A6B7A' },
           { val: '500+', lbl: 'Jam Mengajar',    color: '#6B2D3E' },
-          { val: '6+',   lbl: 'Proyek',          color: '#6A8F6E' },
+          { val: '8+',   lbl: 'Proyek',          color: '#6A8F6E' },
           { val: '12',   lbl: 'Sertifikasi',     color: '#3A6B7A' },
         ].map(s => (
           <div class="stat-item">
@@ -561,50 +511,86 @@ document.addEventListener('mousemove', (e: MouseEvent) => {
 .ms-val { font-size: 1.5rem; font-weight: 500; line-height: 1; }
 .ms-lbl { font-size: 0.62rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.1em; }
 
-/* ── SKILLS ──────────────────────────────────────────────── */
-.skill-row-top {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-  margin-bottom: 1.25rem;
+/* ── SKILLS / CURVED LOOP ─────────────────────────────────── */
+.skills-section {
+  padding-bottom: 3rem;
 }
-.skill-box {
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 6px; padding: 1.75rem;
-  background: rgba(255,255,255,0.01);
+.logo-marquee {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
 }
-.skill-box-full { width: 100%; }
-.skill-box-label {
-  font-size: 0.68rem; letter-spacing: 0.16em;
-  text-transform: uppercase; margin-bottom: 1.5rem;
+.marquee-row {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
-.icon-grid {
-  display: flex; flex-wrap: wrap;
-  gap: 1.25rem; margin-bottom: 1.5rem;
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  width: max-content;
+  will-change: transform;
 }
-.icon-grid-wide { flex-wrap: wrap; }
-.icon-item { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; width: 72px; }
-.icon-wrap {
-  width: 58px; height: 58px;
-  border: 1px solid rgba(255,255,255,0.07); border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.02);
-  transition: border-color 220ms, transform 220ms, box-shadow 220ms;
+.marquee-row--left .marquee-track {
+  animation: marqueeLeft 36s linear infinite;
 }
-.icon-wrap:hover {
-  border-color: var(--hc);
-  transform: translateY(-3px);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--hc) 35%, transparent);
+.marquee-row--right .marquee-track {
+  animation: marqueeRight 42s linear infinite;
 }
-.icon-wrap img { opacity: 0.75; transition: opacity 220ms; }
-.icon-wrap:hover img { opacity: 1; }
-.icon-label { font-size: 0.6rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 1.2; }
-.extra-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-.extra-pill {
-  font-size: 0.68rem; padding: 0.22rem 0.8rem;
-  border: 1px solid rgba(255,255,255,0.07); border-radius: 999px;
-  color: rgba(255,255,255,0.3);
-  transition: border-color 200ms, color 200ms;
+.marquee-logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  opacity: 0.7;
+  filter: grayscale(0.15);
+  transition: opacity 220ms, transform 220ms, filter 220ms;
 }
-.extra-pill:hover { border-color: var(--hc); color: var(--hc); }
+.marquee-logo:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: translateY(-4px) scale(1.08);
+}
+.marquee-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.marquee-logo--fallback {
+  position: relative;
+}
+.marquee-logo--fallback::after {
+  content: attr(data-fallback);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
+  padding: 0 2px;
+}
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3334%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-33.3334%); }
+  to   { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row--left .marquee-track,
+  .marquee-row--right .marquee-track { animation: none; }
+}
 
 /* ── STATS STRIP ─────────────────────────────────────────── */
 .stats-strip {
@@ -739,13 +725,17 @@ document.addEventListener('mousemove', (e: MouseEvent) => {
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   .g-3, .g-4, .g-9 { grid-column: span 12; }
-  .skill-row-top { grid-template-columns: 1fr; }
   .exp-columns { grid-template-columns: 1fr; }
   .col-scroll { height: 280px; }
   .stats-strip { flex-wrap: wrap; }
   .stat-item { flex: 0 0 33%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .marquee-logo { width: 58px; height: 58px; }
+  .marquee-track { gap: 2.5rem; }
 }
 @media (max-width: 600px) {
   .page-section { padding: 5rem 1.25rem; }
+  .marquee-logo { width: 46px; height: 46px; }
+  .marquee-track { gap: 1.75rem; }
+  .logo-marquee { gap: 1rem; padding: 1rem 0; }
 }
 </style>

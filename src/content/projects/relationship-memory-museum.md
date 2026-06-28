@@ -5,14 +5,14 @@ status: "Selesai"
 tags: ["HTML", "CSS", "JavaScript", "Framer Motion", "Vite"]
 category: "Web"
 metric: "Proyek personal paling ambisius secara visual dan emosional"
-date: "2024-07-20"
+date: "2026-06-20"
 featured: false
-demo: "https://memory-museum.pages.dev"
+# demo: "https://memory-museum.pages.dev"
 ---
 
 ## Konsep
 
-Sebagian besar perjalanan dua orang seringkali berakhir terkubur di bawah ribuan pesan digital atau terselip secara acak di folder galeri ponsel yang penuh sesak. Proyek ini lahir dari keinginan sederhana namun mendalam: *bagaimana jika momen-momen berharga tersebut tidak sekadar disimpan, melainkan diberi sebuah rumah?*
+Sebagian besar perjalanan dua orang seringkali berakhir terkubur di bawah ribuan pesan digital atau terselip secara acak di folder galeri ponsel yang penuh sesak. Proyek ini lahir dari keinginan sederhana namun mendalam. **"**bagaimana jika momen-momen berharga tersebut tidak sekadar disimpan, melainkan diberi sebuah rumah?**"**
 
 Untukmu, Piti. **Relationship Memory Museum** adalah sebuah kado personal sekaligus eksperimen teknologi. Ini adalah ruang museum digital statis yang memperlakukan rekaman perjalanan kami, baik berupa potongan foto, sebaris kalimat, rekaman suara, hingga tanggal-tanggal penting, sebagai artefak pameran yang dikurasi secara sadar. Proyek ini mengeksplorasi bagaimana sebuah situs web bisa bertransformasi menjadi medium naratif yang imersif dan bernyawa, melampaui dinginnya interaksi *scrolling* halaman web konvensional.
 
@@ -20,10 +20,10 @@ Untukmu, Piti. **Relationship Memory Museum** adalah sebuah kado personal sekali
 
 Museum ini dirancang dalam bentuk beberapa ruang virtual yang masing-masing mewakili satu babak waktu tertentu dalam perjalanan kami. Pengunjung diajak berjalan melintasi koridor waktu, menemukan potongan masa lalu yang sengaja diletakkan di sudut-sudut yang terencana.
 
-Untuk meredam impresi kaku dari sebuah perangkat digital, arah estetikanya sengaja ditarik ke elemen-elemen **analog**:
-* **Grain & Texture:** Lapisan tekstur kertas dan efek *noise* halus pada latar belakang untuk memberi kesan taktil (seolah bisa diraba).
-* **Tipografi Klasik:** Penggunaan font serif yang melankolis dan hangat, menyerupai ketikan mesin tik atau surat-surat lama yang disimpan dalam kotak.
-* **Palet Warna Muted:** Warna-warna pudar yang terinspirasi dari tone foto polaroid lama yang mulai menguning oleh waktu.
+Untuk meredam impresi kaku dari sebuah perangkat digital, arah estetikanya sengaja ditarik ke elemen-elemen **analog** :
+* **Grain & Texture :** Lapisan tekstur kertas dan efek *noise* halus pada latar belakang untuk memberi kesan taktil (seolah bisa diraba).
+* **Tipografi Klasik :** Penggunaan font serif yang melankolis dan hangat, menyerupai ketikan mesin tik atau surat-surat lama yang disimpan dalam kotak.
+* **Palet Warna Muted :** Warna-warna pudar yang terinspirasi dari tone foto polaroid lama yang mulai menguning oleh waktu.
 
 Terdapat kontras yang indah di sini, sebuah usaha untuk menangkap kehangatan masa lalu yang rapuh, dibangun di atas fondasi instruksi JavaScript modern yang bekerja secara presisi di balik layar.
 
@@ -31,9 +31,9 @@ Terdapat kontras yang indah di sini, sebuah usaha untuk menangkap kehangatan mas
 
 Proyek ini sengaja dibangun dengan arsitektur *minimal footprint* tanpa database atau infrastruktur backend yang rumit, menjaga agar seluruh pengalaman terasa instan dan privat.
 
-* **Arsitektur Utama:** Menggunakan vanilla JavaScript dengan Vite sebagai *build tool* untuk memastikan performa pemuatan ruang tetap optimal.
-* **Kurasi Data:** Semua memori disimpan secara terstruktur di dalam berkas JSON statis. Pengisian data dilakukan secara manual, menjadikan proses penyusunan baris kode ini sebagai proses kurasi ingatan yang intim.
-* **Animasi Transisi:** Perpindahan antar ruang memanfaatkan Framer Motion versi vanilla. Gerakan kamera dan pergeseran viewport dirancang sehalus mungkin untuk menciptakan ilusi spasial, seolah pengunjung benar-benar melangkah dari satu ruangan ke ruangan lain.
+* **Arsitektur Utama :** Menggunakan vanilla JavaScript dengan Vite sebagai *build tool* untuk memastikan performa pemuatan ruang tetap optimal.
+* **Kurasi Data :** Semua memori disimpan secara terstruktur di dalam berkas JSON statis. Pengisian data dilakukan secara manual, menjadikan proses penyusunan baris kode ini sebagai proses kurasi ingatan yang intim.
+* **Animasi Transisi :** Perpindahan antar ruang memanfaatkan Framer Motion versi vanilla. Gerakan kamera dan pergeseran viewport dirancang sehalus mungkin untuk menciptakan ilusi spasial, seolah pengunjung benar-benar melangkah dari satu ruangan ke ruangan lain.
 
 ```json
 {

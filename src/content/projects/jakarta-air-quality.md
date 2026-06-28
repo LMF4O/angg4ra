@@ -7,7 +7,7 @@ category: "Machine Learning"
 metric: "Akurasi terbaik: 94.2% (Random Forest)"
 date: "2024-11-15"
 featured: true
-github: "https://github.com/4RGY/jakarta-ispu"
+# github: "https://github.com/4RGY/jakarta-ispu"
 ---
 
 ## Latar Belakang Masalah
@@ -18,13 +18,13 @@ Prediksi ISPU yang akurat membantu warga dan pemerintah mengambil keputusan yang
 ## Pendekatan
 
 Membandingkan 5 algoritma: Logistic Regression, Decision Tree, Random Forest, SVM, dan KNN.
-Menggunakan SHAP untuk menjelaskan *mengapa* model membuat prediksi tertentu — bukan hanya berapa akurasinya.
+Menggunakan SHAP untuk menjelaskan *mengapa* model membuat prediksi tertentu dan bukan hanya berapa akurasinya.
 
 ## Temuan Utama
 
 - Random Forest mencapai akurasi 94.2%, mengalahkan model lainnya secara konsisten
 - PM2.5 adalah fitur dengan pengaruh terbesar terhadap prediksi
-- Model cenderung underpredict pada level "Sangat Tidak Sehat" — data imbalanced
+- Model cenderung underpredict pada level "Sangat Tidak Sehat" atau data imbalanced
 
 ## Yang Saya Pelajari
 

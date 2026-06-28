@@ -69,8 +69,8 @@ import BentoCard from '../../components/ui/BentoCard.astro';
           <div class="pin-head pin-teal"></div>
           <div class="note note-warm">
             <span class="note-tag font-mono tag-teal">ONGOING</span>
-            <p class="note-title">Skripsi — CRM + ML DigiKidz</p>
-            <p class="note-body">Prediksi performa siswa real-time. Lembaga coding sebagai laboratorium data.</p>
+            <p class="note-title">Predictive CRM Analytics</p>
+            <p class="note-body">Menganalisis pola retensi dan memitigasi risiko penurunan performa belajar siswa lewat pendekatan predictive modeling yang presisi.</p>
             <div class="note-chips"><span class="chip font-mono">CRM</span><span class="chip font-mono">ML</span><span class="chip font-mono">Laravel</span><span class="chip font-mono">TailwindCSS</span></div>
           </div>
         </div>
@@ -1431,15 +1431,70 @@ document.addEventListener("DOMContentLoaded", init);
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────*/
+/* Di mobile, board investigasi di-reflow jadi vertical stack.
+   Posisi absolute % yang didesain untuk board lebar tidak ikut
+   di-scale dengan rasio yang sama, jadi semua elemen di-reset
+   ke flow normal supaya tidak numpuk/overlap. */
 @media (max-width: 768px) {
-  .board-wrap { height: 620px; }
-  .note { max-width: 130px; font-size: 0.92em; padding: 0.5rem 0.65rem; }
-  .note-sm { max-width: 115px; }
-  .note-title { font-size: 0.74rem; }
-  .note-body { font-size: 0.6rem; }
+  .board-wrap {
+    height: auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.25rem 0.9rem;
+  }
+  .board-container {
+    /* beri ruang untuk cat yg masih absolute di atas */
+    padding-top: 2.25rem;
+  }
+
+  /* Matikan garis benang merah — gak relevan dalam layout vertikal */
+  .strings-svg { display: none; }
+  .board-glow { display: none; }
+
+  /* Reset semua elemen yang tadinya absolute-positioned jadi normal flow */
+  .pin-item,
+  .polaroid,
+  .sticky {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100%;
+  }
+
+  /* Pin head (titik merah/teal/hijau) gak relevan tanpa garis benang, sembunyikan */
+  .pin-head { display: none; }
+  .pin-item { align-items: stretch; }
+
+  .note {
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.92em;
+    padding: 0.75rem 0.9rem;
+  }
+  .note-sm { max-width: none; }
+  .note-title { font-size: 0.8rem; }
+  .note-body { font-size: 0.68rem; }
+
+  /* Polaroid & sticky jadi kartu kecil sejajar dalam grid 2 kolom */
+  .polaroid, .sticky {
+    display: inline-flex;
+    width: calc(50% - 0.45rem);
+    max-width: none;
+    box-sizing: border-box;
+  }
+  .polaroid {
+    flex-direction: column;
+    align-items: center;
+  }
   .polaroid-face { width: 48px; height: 48px; font-size: 1.2rem; }
-  .sticky { max-width: 90px; padding: 6px 8px; }
-  .sticky-text { font-size: 0.56rem; }
+  .sticky-text { font-size: 0.62rem; line-height: 1.45; }
+
   .board-cat { left: 1rem; }
   .detail-body { flex-direction: column; gap: 1.5rem; }
   .detail-book-shadow, .detail-img { width: 110px; }
@@ -1448,18 +1503,18 @@ document.addEventListener("DOMContentLoaded", init);
 }
 
 @media (max-width: 480px) {
-  .board-wrap { height: 780px; }
-  .note { max-width: 108px; padding: 0.45rem 0.55rem; }
-  .note-sm { max-width: 98px; }
-  .note-title { font-size: 0.68rem; }
-  .note-body { font-size: 0.56rem; line-height: 1.4; }
+  .note { padding: 0.65rem 0.8rem; }
+  .note-title { font-size: 0.75rem; }
+  .note-body { font-size: 0.64rem; line-height: 1.45; }
   .note-chips { gap: 3px; }
-  .chip { font-size: 0.46rem; padding: 1px 4px; }
+  .chip { font-size: 0.5rem; padding: 1px 4px; }
+
+  /* Di layar sangat kecil, polaroid/sticky full-width 1 kolom biar gak sempit */
+  .polaroid, .sticky { width: 100%; }
   .polaroid { padding: 5px 5px 16px; }
   .polaroid-face { width: 38px; height: 38px; font-size: 1rem; }
   .polaroid-label { font-size: 0.42rem; }
-  .sticky { max-width: 72px; padding: 5px 6px; }
-  .sticky-text { font-size: 0.5rem; line-height: 1.35; }
-
+  .sticky { padding: 6px 8px; }
+  .sticky-text { font-size: 0.58rem; line-height: 1.4; }
 }
 </style>
