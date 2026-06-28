@@ -56,6 +56,7 @@ const { title, date, tags, readingTime, excerpt } = post.data;
     transition: color 200ms ease;
   }
   .back-link:hover { color: var(--text-primary); }
+
   .post-header {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
@@ -90,6 +91,8 @@ const { title, date, tags, readingTime, excerpt } = post.data;
     border-radius: 999px;
     color: var(--text-secondary);
   }
+
+  /* Markdown body */
   .post-body :global(h2) { margin-top: 2.5rem; margin-bottom: 0.75rem; }
   .post-body :global(h3) { margin-top: 2rem; margin-bottom: 0.5rem; }
   .post-body :global(p) { margin-bottom: 1.25rem; color: var(--text-secondary); line-height: 1.8; }
@@ -104,6 +107,7 @@ const { title, date, tags, readingTime, excerpt } = post.data;
   }
   .post-body :global(li::marker) { color: var(--accent-data); }
   .post-body :global(strong) { color: var(--text-primary); font-weight: 600; }
+  .post-body :global(em) { font-style: italic; }
   .post-body :global(code) {
     background: var(--bg-card);
     border: 1px solid var(--border);
